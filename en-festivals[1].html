@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>html{color-scheme:light}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Mongolia Festival Field Guide</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reggae+One&family=BIZ+UDPGothic:wght@400;700&family=IBM+Plex+Sans+Condensed:wght@600&display=swap">
+<style>
+/* Layout: a wall of festival posters; a 12-month calendar first, then cards rated for craziness, filtered by season */
+:root{
+  --bg:#eef2f8;
+  --surface:#ffffff;
+  --ink:#151a24;
+  --muted:#586174;
+  --line:#d4dbe6;
+  --red:#d9432a;     /* Naadam vermilion */
+  --saffron:#efaa17; /* monk-robe saffron */
+  --teal:#0f625f;    /* summer steppe */
+  --ice:#3f7fc4;     /* frozen lake */
+  --on-color:#ffffff;
+  --f-display:"Reggae One","Hiragino Sans","Yu Gothic",sans-serif;
+  --f-body:"BIZ UDPGothic","Hiragino Sans","Yu Gothic",sans-serif;
+  --f-label:"IBM Plex Sans Condensed","Arial Narrow",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f131b;--surface:#171d28;--ink:#e8ecf3;--muted:#a1aabb;--line:#2a3343;
+  --red:#ea6a4f;--saffron:#f2bb45;--teal:#3fa39e;--ice:#74a7e0;--on-color:#0f131b;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f131b;--surface:#171d28;--ink:#e8ecf3;--muted:#a1aabb;--line:#2a3343;
+  --red:#ea6a4f;--saffron:#f2bb45;--teal:#3fa39e;--ice:#74a7e0;--on-color:#0f131b;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.8}
+.wrap{max-width:1100px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;line-height:1.3;margin:0;text-wrap:balance}
+p{margin:0}
+.lbl{font-family:var(--f-label);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.cyr{font-family:var(--f-label);letter-spacing:.04em}
+
+/* hero */
+.hero .wrap{padding-block:52px 28px;display:grid;gap:18px}
+.hero h1{font-size:clamp(2.2rem,7.5vw,4.8rem)}
+.hero h1 em{font-style:normal;color:var(--red)}
+.hero .lead{max-width:36em;font-size:1.05rem;color:var(--muted)}
+.series{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.chip{font-family:var(--f-label);font-size:.78rem;letter-spacing:.1em;border:1.5px solid var(--ink);border-radius:999px;padding:2px 12px}
+
+/* calendar */
+.cal-sec{padding-block:8px 36px}
+.cal-wrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px}
+.cal{display:grid;grid-template-columns:200px repeat(12,minmax(40px,1fr));min-width:760px;row-gap:6px;font-size:.82rem}
+.cal .m{font-family:var(--f-label);text-align:center;color:var(--muted);padding-bottom:6px;border-bottom:1px solid var(--line)}
+.cal .name{padding-right:10px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;align-self:center}
+.cal .bar{height:22px;border-radius:6px;align-self:center}
+.cal .bar.summer{background:var(--teal)}
+.cal .bar.winter{background:var(--ice)}
+.cal .bar.autumn{background:var(--red)}
+.cal .bar.spring{background:var(--saffron)}
+.cal-note{margin-top:10px;font-size:.82rem;color:var(--muted)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:.82rem;color:var(--muted);margin-top:10px}
+.legend span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px;background:var(--c)}
+
+/* filter */
+.bar-top{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+.bar-top h2{font-size:clamp(1.5rem,4vw,2.2rem)}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.fbtn{font:inherit;font-weight:700;font-size:.9rem;padding:8px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;min-height:40px}
+.fbtn[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.fbtn:focus-visible{outline:3px solid var(--saffron);outline-offset:2px}
+
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;padding-bottom:56px}
+.fest{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:grid;grid-template-rows:auto 1fr;min-width:0}
+.poster{position:relative;padding:20px 20px 18px;color:var(--on-color);display:grid;grid-template-columns:1fr auto;gap:10px;align-items:end;min-height:150px}
+.poster.summer{background:var(--teal)}.poster.winter{background:var(--ice)}.poster.autumn{background:var(--red)}.poster.spring{background:var(--saffron);color:#1a1405}
+.poster h3{font-size:1.55rem}
+.poster .cyr{font-size:.85rem;opacity:.85;display:block;margin-top:2px}
+.poster .when{font-family:var(--f-label);font-size:.8rem;letter-spacing:.08em;opacity:.95;grid-column:1/-1;order:-1}
+.poster svg{width:72px;height:72px;fill:none;stroke:currentColor;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;opacity:.9}
+.body{padding:18px 20px 22px;display:grid;gap:12px;align-content:start}
+.meter{display:flex;gap:10px;align-items:center}
+.dots{display:flex;gap:4px}
+.dots i{width:16px;height:16px;border-radius:50%;background:var(--line);display:block}
+.dots i.on{background:var(--red)}
+.meter b{font-family:var(--f-display);font-weight:400;font-size:.95rem}
+.where{font-size:.85rem;color:var(--muted)}
+.crazy{font-weight:700;font-size:1rem;line-height:1.6}
+.body p.desc{font-size:.93rem;color:var(--muted)}
+.tip{font-size:.86rem;border-top:1px dashed var(--line);padding-top:10px}
+.tip::before{content:"PRO TIP";font-family:var(--f-label);font-size:.7rem;letter-spacing:.1em;color:var(--teal);display:block}
+
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:26px;font-size:.84rem;color:var(--muted);display:grid;gap:6px}
+footer b{font-family:var(--f-display);font-weight:400;color:var(--ink)}
+@media (max-width:420px){.cards{grid-template-columns:minmax(0,1fr)}}
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="series"><span class="chip">DIT ORIGINAL</span><span class="lbl">MONGOLIA FESTIVAL FIELD GUIDE</span></div>
+    <h1>Mongolian festivals are,<br><em>mostly, a little crazy.</em></h1>
+    <p class="lead">Tug-of-war on a lake frozen at −30°C. Rodeo on the back of a yak. Golden eagles called back to a rider's arm at full gallop. Here are the festivals where nomadic life turns into competition.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="cal-sec" aria-labelledby="cal-h">
+    <div class="bar-top"><h2 id="cal-h">When can you go?</h2></div>
+    <div class="cal-wrap">
+      <div class="cal" id="cal" role="table" aria-label="Festival months"></div>
+      <div class="legend">
+        <span style="--c:var(--ice)">Winter</span><span style="--c:var(--saffron)">Spring</span><span style="--c:var(--teal)">Summer</span><span style="--c:var(--red)">Autumn</span>
+      </div>
+      <p class="cal-note">Dates change by year and region. Lunar New Year follows the lunar calendar, so it moves every year. Check the latest schedule before you go.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="list-h">
+    <div class="bar-top">
+      <h2 id="list-h">Festival field guide, rated for craziness</h2>
+      <div class="filters" role="group" aria-label="Filter by season">
+        <button class="fbtn" type="button" data-f="all" aria-pressed="true">All</button>
+        <button class="fbtn" type="button" data-f="winter" aria-pressed="false">Winter</button>
+        <button class="fbtn" type="button" data-f="summer" aria-pressed="false">Summer</button>
+        <button class="fbtn" type="button" data-f="autumn" aria-pressed="false">Autumn</button>
+        <button class="fbtn" type="button" data-f="sort" aria-pressed="false">Craziest first</button>
+      </div>
+    </div>
+    <div class="cards" id="cards"></div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <b>DIT ORIGINAL GUIDE</b>
+    <p>Dates and programs can change from year to year. Most visitors join countryside festivals on a tour.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var ICON={
+    horse:'<path d="M14 54 L22 34 Q24 22 36 20 L44 12 L46 20 Q56 22 58 32 L54 34 L50 28 L44 32 L44 54 M28 40 L26 54"/>',
+    camel:'<path d="M10 54 L14 36 Q20 26 26 34 Q32 22 38 34 L48 34 L52 22 Q56 16 60 22 L58 28 L54 30 L50 54 M22 40 L20 54 M42 38 L42 54"/>',
+    ice:'<path d="M36 10 V62 M14 23 L58 49 M58 23 L14 49 M30 14 L36 20 L42 14 M30 58 L36 52 L42 58"/>',
+    yak:'<path d="M12 22 Q16 34 26 30 M60 22 Q56 34 46 30 M26 30 Q36 24 46 30 L48 44 Q36 56 24 44 Z M30 40 H42 M22 44 Q14 56 18 62 M50 44 Q58 56 54 62"/>',
+    eagle:'<path d="M8 30 Q22 18 36 30 Q50 18 64 30 Q52 32 46 40 L40 38 L36 50 L32 38 L26 40 Q20 32 8 30 Z M36 30 L36 22 L40 18"/>',
+    deer:'<path d="M26 30 L20 16 M20 22 L12 18 M20 16 L24 8 M46 30 L52 16 M52 22 L60 18 M52 16 L48 8 M26 30 Q36 26 46 30 L44 44 Q36 52 28 44 Z M32 52 V62 M40 52 V62"/>',
+    mask:'<path d="M16 22 Q36 4 56 22 Q60 44 36 62 Q12 44 16 22 Z M26 32 L32 34 M46 32 L40 34 M28 46 Q36 52 44 46 M24 12 L18 6 M48 12 L54 6 M36 8 V2"/>',
+    buuz:'<path d="M12 46 Q12 26 36 24 Q60 26 60 46 Z M36 24 Q34 18 36 14 Q38 18 36 24 M24 30 Q28 36 26 44 M48 30 Q44 36 46 44 M36 26 V44 M8 50 H64"/>'
+  };
+  var F=[
+    {ja:'Naadam',mn:'Наадам',season:'summer',months:[7],when:'July 11–13',where:'Ulaanbaatar and across the country',icon:'horse',c:3,
+      crazy:'Child jockeys race horses flat out across the steppe, over courses of up to almost 30 km.',
+      desc:'The biggest festival of the year, built on the “three manly games”: wrestling, horse racing and archery. Wrestlers fight in open-chested jackets, and the winner performs the eagle dance.',
+      tip:'The taste of Naadam is khuushuur, a fried meat pastry from the stalls around the stadium.'},
+    {ja:'Thousand Camel Festival',mn:'Мянган тэмээний баяр',season:'winter',months:[2,3],when:'Winter (around Feb–Mar)',where:'Southern Gobi',icon:'camel',c:4,
+      crazy:'Bactrian camels racing at full speed, and polo played from a camel\'s back.',
+      desc:'Started to protect the two-humped camels of the Gobi. There are camel beauty contests and a parade of herders in traditional dress.',
+      tip:'Camels are much faster than they look. Stand well back from the track.'},
+    {ja:'Khövsgöl Ice Festival',mn:'Хөвсгөлийн мөсний баяр',season:'winter',months:[2,3],when:'Winter (around Feb–Mar)',where:'Lake Khövsgöl, north',icon:'ice',c:4,
+      crazy:'Tug-of-war, horse-sled races and ice sculpting on a lake frozen over a meter thick.',
+      desc:'The crystal-clear lake known as the “Blue Pearl” becomes a giant arena in winter. Sometimes you can see the blue water right through the ice under your feet.',
+      tip:'It feels like −20 to −30°C. Heat packs inside your boots are heaven.'},
+    {ja:'Yak Festival',mn:'Сарлагийн баяр',season:'summer',months:[8],when:'Summer (around August)',where:'Arkhangai, central Mongolia',icon:'yak',c:5,
+      crazy:'Rodeo on shaggy yaks, and yaks racing at full speed.',
+      desc:'A festival of the highland yak herders, with yak-milking contests and yak polo. You can taste cheese and other dairy made from yak milk.',
+      tip:'Yaks are moody. Even mid-race, one may charge toward the crowd.'},
+    {ja:'Golden Eagle Festival',mn:'Бүргэдийн баяр',season:'autumn',months:[10],when:'Autumn (early October)',where:'Bayan-Ölgii, far west',icon:'eagle',c:5,
+      crazy:'An eagle released from a mountaintop flies straight back to its owner\'s arm as he gallops below.',
+      desc:'Kazakh eagle hunters of western Mongolia compete in skill. Fierce horseback games are held too, like kokpar, where riders wrestle over a goat skin.',
+      tip:'Look at the hunters\' traditional clothes and fox-fur hats. Ask before taking photos.'},
+    {ja:'Reindeer Festival',mn:'Цаа бугын баяр',season:'winter',months:[2],when:'Winter (around February)',where:'Khövsgöl Province, north',icon:'deer',c:4,
+      crazy:'Races on reindeer across the snow. Very few peoples in the world ride reindeer.',
+      desc:'A festival that keeps alive the culture of the Tsaatan, a small group who live with reindeer in the taiga forest. Expect reindeer sled pulls and traditional songs.',
+      tip:'The Tsaatan way of life must balance tourism with protecting the land. Join with respect.'},
+    {ja:'Tsam mask dance',mn:'Цам',season:'summer',months:[8],when:'Summer (around August) and other times',where:'Temples near Ulaanbaatar and elsewhere',icon:'mask',c:3,
+      crazy:'Monks in giant masks dance as gods, skeletons and animals to drive away evil spirits.',
+      desc:'A ritual dance of Tibetan Buddhism. Banned under socialism, it returned in the 1990s. You can see it at events like the summer Danshig Naadam.',
+      tip:'Walk clockwise inside temples, and don\'t cross in front of the dancers.'},
+    {ja:'Tsagaan Sar (Lunar New Year)',mn:'Цагаан сар',season:'winter',months:[1,2],when:'Winter (around Jan–Feb)',where:'Homes across the country',icon:'buuz',c:3,
+      crazy:'The whole family makes hundreds of steamed buuz dumplings, and some homes make over a thousand.',
+      desc:'The most important holiday of the year. People visit relative after relative, and every home serves buuz and tea.',
+      tip:'Every house will feed you buuz, so don\'t overeat at the first one.'}
+  ];
+
+  var cal=document.getElementById('cal'),MN=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],h='<div></div>';
+  for(var m=1;m<=12;m++)h+='<div class="m">'+MN[m-1]+'</div>';
+  F.forEach(function(f){
+    h+='<div class="name" role="rowheader" title="'+f.ja+'">'+f.ja+'</div>';
+    for(var m=1;m<=12;m++){h+=f.months.indexOf(m)>-1?'<div class="bar '+f.season+'" title="'+f.ja+', '+MN[m-1]+'"></div>':'<div></div>';}
+  });
+  cal.innerHTML=h;
+
+  var wrap=document.getElementById('cards');
+  function card(f){
+    var dots='';for(var i=1;i<=5;i++)dots+='<i class="'+(i<=f.c?'on':'')+'"></i>';
+    return '<article class="fest" data-season="'+f.season+'" data-c="'+f.c+'">'+
+      '<div class="poster '+f.season+'"><span class="when">'+f.when+'</span><div><h3>'+f.ja+'</h3><span class="cyr">'+f.mn+'</span></div>'+
+      '<svg viewBox="0 0 72 72" aria-hidden="true">'+ICON[f.icon]+'</svg></div>'+
+      '<div class="body"><div class="meter"><span class="dots" aria-hidden="true">'+dots+'</span><b>Craziness '+f.c+'/5</b></div>'+
+      '<p class="where">'+f.where+'</p><p class="crazy">'+f.crazy+'</p><p class="desc">'+f.desc+'</p><p class="tip">'+f.tip+'</p></div></article>';
+  }
+  function render(list){wrap.innerHTML=list.map(card).join('');}
+  render(F);
+
+  var btns=document.querySelectorAll('.fbtn');
+  btns.forEach(function(b){
+    b.addEventListener('click',function(){
+      btns.forEach(function(x){x.setAttribute('aria-pressed','false');});
+      b.setAttribute('aria-pressed','true');
+      var k=b.getAttribute('data-f');
+      if(k==='all')render(F);
+      else if(k==='sort')render(F.slice().sort(function(a,b){return b.c-a.c;}));
+      else render(F.filter(function(f){return f.season===k;}));
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

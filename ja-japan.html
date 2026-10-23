@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>html{color-scheme:light}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>モンゴルと日本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;800&family=Noto+Sans+JP:wght@400;500;700&family=IBM+Plex+Sans+Condensed:wght@500;600&display=swap">
+<style>
+/* Layout: 中央の一本線で日本とモンゴルを左右に分ける比較の書。数字→文化→似ている所/違う所→年表の順に読む */
+:root{
+  --bg:#f5f6f8;
+  --surface:#ffffff;
+  --ink:#18202c;
+  --muted:#5a6475;
+  --line:#d6dbe3;
+  --jp:#b8323a;      /* 日本:日の丸の紅 */
+  --mn:#1f5aa6;      /* モンゴル:国旗の青 */
+  --gold:#c9932e;    /* ソヨンボの金 */
+  --jp-soft:#f7e6e7;
+  --mn-soft:#e4ecf8;
+  --f-display:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;
+  --f-body:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;
+  --f-label:"IBM Plex Sans Condensed","Arial Narrow",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#10141b;--surface:#171d27;--ink:#e7ebf2;--muted:#a1abbb;--line:#2a3342;
+  --jp:#e66a70;--mn:#78a6e6;--gold:#e0b35a;--jp-soft:#2d1a1d;--mn-soft:#17243a;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10141b;--surface:#171d27;--ink:#e7ebf2;--muted:#a1abbb;--line:#2a3342;
+  --jp:#e66a70;--mn:#78a6e6;--gold:#e0b35a;--jp-soft:#2d1a1d;--mn-soft:#17243a;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.85}
+.wrap{max-width:1060px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);font-weight:800;line-height:1.35;margin:0;text-wrap:balance}
+p{margin:0}
+.lbl{font-family:var(--f-label);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.jp{color:var(--jp)}.mn{color:var(--mn)}
+.cyr{font-family:var(--f-label);font-weight:500;letter-spacing:.03em}
+
+/* hero */
+.hero .wrap{padding-block:56px 32px;display:grid;gap:18px;text-align:left}
+.series{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.chip{font-family:var(--f-label);font-size:.78rem;letter-spacing:.1em;border:1.5px solid var(--ink);border-radius:999px;padding:2px 12px}
+.hero h1{font-size:clamp(2.3rem,7vw,4.4rem)}
+.hero h1 .amp{font-weight:600;color:var(--gold);padding:0 .15em}
+.hero .lead{max-width:36em;color:var(--muted);font-size:1.05rem}
+
+/* split numbers */
+.split{display:grid;grid-template-columns:1fr auto 1fr;gap:0;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.split .side{padding:20px 22px;display:grid;gap:14px;min-width:0}
+.split .side.jpS{text-align:right}
+.split .mid{background:var(--line);width:1px}
+.split .head{font-family:var(--f-display);font-size:1.3rem}
+.stat{display:grid;gap:0}
+.stat b{font-family:var(--f-label);font-weight:600;font-size:clamp(1.4rem,3.6vw,2rem);font-variant-numeric:tabular-nums;line-height:1.2}
+.stat span{font-size:.82rem;color:var(--muted)}
+.split-note{font-size:.82rem;color:var(--muted);margin-top:10px}
+
+/* sections */
+section.sec{padding-block:56px;border-top:1px solid var(--line)}
+.sec-head{display:grid;gap:6px;margin-bottom:28px;max-width:40em}
+.sec-head h2{font-size:clamp(1.6rem,4vw,2.4rem)}
+.sec-head p{color:var(--muted)}
+
+/* culture grid */
+.cult{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.c{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px;display:grid;gap:8px;align-content:start;min-width:0}
+.c h3{font-size:1.2rem}
+.c .cyr{color:var(--mn);font-size:.85rem}
+.c p{font-size:.94rem;color:var(--muted)}
+.c p b{color:var(--ink);font-weight:500}
+
+/* compare */
+.tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.tab{font:inherit;font-weight:700;padding:9px 20px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;min-height:42px}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tab:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.rows{display:grid;gap:14px}
+.row{display:grid;grid-template-columns:minmax(0,1fr) 150px minmax(0,1fr);background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.row .t{grid-column:2;grid-row:1;display:grid;place-content:center;text-align:center;padding:14px 10px;border-left:1px solid var(--line);border-right:1px solid var(--line);font-family:var(--f-display);font-size:1.05rem;line-height:1.4}
+.row .a{grid-column:1;grid-row:1;padding:16px 20px;background:var(--jp-soft);text-align:right}
+.row .b{grid-column:3;grid-row:1;padding:16px 20px;background:var(--mn-soft)}
+.row .a small,.row .b small{display:block;font-family:var(--f-label);font-size:.7rem;letter-spacing:.12em;margin-bottom:2px}
+.row .a small{color:var(--jp)}.row .b small{color:var(--mn)}
+.row p{font-size:.93rem}
+.row.same .t::after{content:"共通";display:block;font-family:var(--f-label);font-size:.7rem;letter-spacing:.12em;color:var(--gold);margin-top:2px}
+.row.diff .t::after{content:"相違";display:block;font-family:var(--f-label);font-size:.7rem;letter-spacing:.12em;color:var(--muted);margin-top:2px}
+
+/* timeline */
+.tl{list-style:none;margin:0;padding:0;display:grid;gap:0;position:relative}
+.tl::before{content:"";position:absolute;left:96px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl li{display:grid;grid-template-columns:84px 24px minmax(0,1fr);gap:0 12px;padding-block:12px}
+.tl .y{font-family:var(--f-label);font-weight:600;font-size:1rem;text-align:right;font-variant-numeric:tabular-nums;padding-top:1px}
+.tl .dot{width:14px;height:14px;border-radius:50%;background:var(--surface);border:3px solid var(--mn);margin:6px 0 0 -1px;position:relative;z-index:1}
+.tl li.link .dot{border-color:var(--jp);background:var(--jp)}
+.tl h3{font-family:var(--f-body);font-weight:700;font-size:1rem}
+.tl p{font-size:.92rem;color:var(--muted);max-width:38em}
+.tl .jtag{font-family:var(--f-label);font-size:.68rem;letter-spacing:.1em;color:var(--jp);border:1px solid var(--jp);border-radius:3px;padding:0 6px;margin-left:8px;vertical-align:2px;white-space:nowrap}
+.tl-legend{display:flex;gap:18px;font-size:.84rem;color:var(--muted);margin-bottom:12px;flex-wrap:wrap}
+.tl-legend span::before{content:"";display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px;border:3px solid var(--c)}
+.tl-legend span.j::before{background:var(--jp)}
+
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:26px;font-size:.84rem;color:var(--muted);display:grid;gap:6px}
+footer b{font-family:var(--f-display);color:var(--ink)}
+
+@media (max-width:860px){.cult{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){
+  .cult{grid-template-columns:minmax(0,1fr)}
+  .split{grid-template-columns:1fr}
+  .split .mid{width:auto;height:1px}
+  .split .side.jpS{text-align:left}
+  .row{grid-template-columns:minmax(0,1fr)}
+  .row .t{grid-column:1;grid-row:1;border:0;border-bottom:1px solid var(--line);place-content:start;text-align:left;padding:12px 18px}
+  .row .a{grid-column:1;grid-row:2;text-align:left}
+  .row .b{grid-column:1;grid-row:3}
+  .row.same .t::after,.row.diff .t::after{display:inline;margin-left:8px}
+  .tl::before{left:70px}
+  .tl li{grid-template-columns:58px 24px minmax(0,1fr)}
+  .tl .y{font-size:.9rem}
+}
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="series"><span class="chip">DIT ORIGINAL</span><span class="lbl">Culture ・ Customs ・ History</span></div>
+    <h1><span class="jp">日本</span><span class="amp">と</span><span class="mn">モンゴル</span><br>似ていて、ちがう国</h1>
+    <p class="lead">赤ちゃんのおしりの青いあざ、同じ語順のことば、そして相撲。遠いようで近い二つの国を、文化、習慣、歴史から比べてみましょう。</p>
+
+    <div class="split" aria-label="日本とモンゴルの基本データ">
+      <div class="side jpS">
+        <div class="head jp">日本</div>
+        <div class="stat"><b>約38万 km²</b><span>面積</span></div>
+        <div class="stat"><b>約1億2千万人</b><span>人口</span></div>
+        <div class="stat"><b>約330人 / km²</b><span>人口密度</span></div>
+      </div>
+      <div class="mid" aria-hidden="true"></div>
+      <div class="side">
+        <div class="head mn">モンゴル</div>
+        <div class="stat"><b>約156万 km²</b><span>面積(日本の約4倍)</span></div>
+        <div class="stat"><b>約350万人</b><span>人口(その約半分が首都に)</span></div>
+        <div class="stat"><b>約2人 / km²</b><span>人口密度(世界でも最も低い国の一つ)</span></div>
+      </div>
+    </div>
+    <p class="split-note">数字はおおよその値です。</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="sec" id="culture">
+  <div class="sec-head"><span class="lbl">01 Culture</span><h2>モンゴル文化の基本</h2><p>まず知っておきたい、草原の暮らしの土台。</p></div>
+  <div class="cult">
+    <article class="c"><h3>遊牧と五畜</h3><span class="cyr">Таван хошуу мал</span><p>馬、牛、ラクダ、羊、ヤギの<b>五畜</b>とともに、季節ごとに草地を移って暮らします。今も地方には多くの遊牧民がいます。</p></article>
+    <article class="c"><h3>ゲル</h3><span class="cyr">Гэр</span><p>木の骨組みにフェルトを張った円形の住まい。<b>数時間で組み立て・解体</b>でき、引っ越しのたびに家ごと運びます。首都にもゲル地区があります。</p></article>
+    <article class="c"><h3>白い食べ物、赤い食べ物</h3><span class="cyr">Цагаан идээ ・ Улаан идээ</span><p>夏は乳製品の<b>「白い食べ物」</b>、冬は肉の<b>「赤い食べ物」</b>が中心。塩味のミルクティーは毎日欠かせません。</p></article>
+    <article class="c"><h3>二つの文字</h3><span class="cyr">Кирилл ・ Монгол бичиг</span><p>普段は<b>キリル文字</b>を使いますが、縦書きの<b>伝統的なモンゴル文字</b>も学校で教えられ、公的な場での使用が広がっています。</p></article>
+    <article class="c"><h3>馬頭琴とホーミー</h3><span class="cyr">Морин хуур ・ Хөөмий</span><p>弦の先に馬の頭が彫られた<b>馬頭琴</b>と、一人で二つの音を同時に出す<b>ホーミー</b>は、ユネスコの無形文化遺産です。</p></article>
+    <article class="c"><h3>信仰</h3><span class="cyr">Бурхан шашин ・ Бөө мөргөл</span><p><b>チベット仏教</b>が広く信じられ、天(テンゲル)や自然を敬う<b>シャーマニズム</b>の考え方も暮らしに残っています。</p></article>
+  </div>
+</section>
+
+<section class="sec" id="compare">
+  <div class="sec-head"><span class="lbl">02 Compare</span><h2>日本との共通点と相違点</h2><p>左が日本、右がモンゴル。タブで切り替えられます。</p></div>
+  <div class="tabs" role="tablist" aria-label="比較の種類">
+    <button class="tab" role="tab" type="button" id="t-same" aria-selected="true" aria-controls="p-same">似ているところ</button>
+    <button class="tab" role="tab" type="button" id="t-diff" aria-selected="false" aria-controls="p-diff">ちがうところ</button>
+  </div>
+
+  <div class="rows" id="p-same" role="tabpanel" aria-labelledby="t-same">
+    <div class="row same"><div class="t">蒙古斑</div>
+      <div class="a"><small>JAPAN</small><p>多くの赤ちゃんのおしりに青いあざがあり、成長とともに消えます。</p></div>
+      <div class="b"><small>MONGOLIA</small><p>名前の由来になった国。モンゴルの赤ちゃんにもほぼ必ず見られます。</p></div></div>
+    <div class="row same"><div class="t">ことばの<br>語順</div>
+      <div class="a"><small>JAPAN</small><p>「私は ご飯を 食べる」。動詞が最後に来ます。</p></div>
+      <div class="b"><small>MONGOLIA</small><p><span class="cyr">Би хоол идэнэ</span>(私 ご飯 食べる)。語順が同じで、「は・を」のような語尾もつきます。</p></div></div>
+    <div class="row same"><div class="t">相撲</div>
+      <div class="a"><small>JAPAN</small><p>国技の大相撲。モンゴル出身の横綱が何人も誕生しています。</p></div>
+      <div class="b"><small>MONGOLIA</small><p>伝統の相撲<span class="cyr">Бөх</span>(ブフ)はナーダムの花形。子どもの頃から親しみます。</p></div></div>
+    <div class="row same"><div class="t">干支と<br>旧暦</div>
+      <div class="a"><small>JAPAN</small><p>年賀状に干支を描き、年回りを気にする習慣があります。</p></div>
+      <div class="b"><small>MONGOLIA</small><p>同じ十二支を使い、正月は今も旧暦のツァガーン・サルで祝います。</p></div></div>
+    <div class="row same"><div class="t">年長者を<br>敬う</div>
+      <div class="a"><small>JAPAN</small><p>敬語を使い、上座を譲ります。</p></div>
+      <div class="b"><small>MONGOLIA</small><p>ゲルの奥の上座を年長者に、新年の挨拶では年下が年長者の腕を支えます。</p></div></div>
+    <div class="row same"><div class="t">教科書の<br>物語</div>
+      <div class="a"><small>JAPAN</small><p>小学校の国語で「スーホの白い馬」を読んだ人が多いはず。</p></div>
+      <div class="b"><small>MONGOLIA</small><p>馬頭琴の始まりを伝えるモンゴルの民話がもとになっています。</p></div></div>
+  </div>
+
+  <div class="rows" id="p-diff" role="tabpanel" aria-labelledby="t-diff" hidden>
+    <div class="row diff"><div class="t">相撲の<br>ルール</div>
+      <div class="a"><small>JAPAN</small><p>土俵があり、外に出るか足の裏以外がつけば負け。</p></div>
+      <div class="b"><small>MONGOLIA</small><p>土俵も制限時間もなし。ひじ、ひざ、背中が地面についたら負け。</p></div></div>
+    <div class="row diff"><div class="t">名前</div>
+      <div class="a"><small>JAPAN</small><p>家族で同じ名字を名乗ります。</p></div>
+      <div class="b"><small>MONGOLIA</small><p>普段は「父の名前+自分の名前」。名字にあたる氏族名は、1990年代以降に復活しました。</p></div></div>
+    <div class="row diff"><div class="t">住まい</div>
+      <div class="a"><small>JAPAN</small><p>一か所に家を建てて定住するのが基本。</p></div>
+      <div class="b"><small>MONGOLIA</small><p>遊牧民は家ごと移動。都市ではアパートとゲル地区が並びます。</p></div></div>
+    <div class="row diff"><div class="t">食事</div>
+      <div class="a"><small>JAPAN</small><p>魚と米が中心。生の魚もよく食べます。</p></div>
+      <div class="b"><small>MONGOLIA</small><p>羊肉と乳製品が中心。海がない国なので、魚を食べる習慣は少なめです。</p></div></div>
+    <div class="row diff"><div class="t">お茶</div>
+      <div class="a"><small>JAPAN</small><p>緑茶は何も入れずに飲みます。</p></div>
+      <div class="b"><small>MONGOLIA</small><p>お茶にミルクと塩を入れて煮出すのが定番です。</p></div></div>
+    <div class="row diff"><div class="t">気候</div>
+      <div class="a"><small>JAPAN</small><p>湿度が高く、梅雨があります。</p></div>
+      <div class="b"><small>MONGOLIA</small><p>乾燥した大陸性気候。首都は「世界一寒い首都」とも呼ばれ、冬はマイナス30℃以下にも。</p></div></div>
+  </div>
+</section>
+
+<section class="sec" id="history">
+  <div class="sec-head"><span class="lbl">03 History</span><h2>年表で見るモンゴルの歴史</h2><p>赤い印は、日本と関わりのある出来事です。</p></div>
+  <div class="tl-legend"><span style="--c:var(--mn)">モンゴルの歴史</span><span class="j" style="--c:var(--jp)">日本との関わり</span></div>
+  <ol class="tl">
+    <li><span class="y">前3世紀</span><span class="dot"></span><div><h3>匈奴が草原に国を築く</h3><p>モンゴル高原に最初の大きな遊牧国家が生まれます。</p></div></li>
+    <li><span class="y">1206</span><span class="dot"></span><div><h3>チンギス・ハーンがモンゴル帝国を建国</h3><p>草原の部族をまとめ、のちに人類史上最大級の陸の帝国へ広がります。</p></div></li>
+    <li><span class="y">1271</span><span class="dot"></span><div><h3>フビライ・ハーンが国号を「元」とする</h3><p>チンギスの孫が中国を治め、大都(今の北京)を都にしました。</p></div></li>
+    <li class="link"><span class="y">1274・81</span><span class="dot"></span><div><h3>元寇(文永の役・弘安の役)<span class="jtag">日本</span></h3><p>元の軍が二度にわたって九州に攻めてきます。日本とモンゴルの最初の大きな接点です。</p></div></li>
+    <li><span class="y">1368</span><span class="dot"></span><div><h3>元が中国を追われ、草原へ戻る</h3><p>その後、モンゴルは各地の勢力に分かれていきます。</p></div></li>
+    <li><span class="y">17世紀〜</span><span class="dot"></span><div><h3>清の支配下に入る</h3><p>約200年にわたり、清朝の統治を受けます。</p></div></li>
+    <li><span class="y">1911</span><span class="dot"></span><div><h3>清からの独立を宣言</h3><p>清の崩壊をきっかけに、ボグド・ハーンを君主として独立を宣言しました。</p></div></li>
+    <li><span class="y">1924</span><span class="dot"></span><div><h3>モンゴル人民共和国が成立</h3><p>ソ連に次ぐ世界で二番目の社会主義国になりました。</p></div></li>
+    <li class="link"><span class="y">1939</span><span class="dot"></span><div><h3>ノモンハン事件(ハルハ河戦争)<span class="jtag">日本</span></h3><p>国境をめぐり、日本・満州国軍とソ連・モンゴル軍が戦いました。</p></div></li>
+    <li class="link"><span class="y">1972</span><span class="dot"></span><div><h3>日本とモンゴルが国交を結ぶ<span class="jtag">日本</span></h3><p>ここから経済協力や人の交流が本格的に始まります。</p></div></li>
+    <li><span class="y">1990</span><span class="dot"></span><div><h3>民主化と市場経済への移行</h3><p>平和的な民主化運動により、複数政党制が実現しました。</p></div></li>
+    <li><span class="y">1992</span><span class="dot"></span><div><h3>新しい憲法、国名は「モンゴル国」に</h3><p>チンギス・ハーンも国の英雄として再び大切にされるようになります。</p></div></li>
+    <li class="link"><span class="y">1990年代〜</span><span class="dot"></span><div><h3>モンゴル出身力士が大相撲で活躍<span class="jtag">日本</span></h3><p>1992年に初のモンゴル出身力士が入門。その後、横綱を何人も生み出し、両国をつなぐ存在になりました。</p></div></li>
+  </ol>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <b>DIT ORIGINAL GUIDE</b>
+    <p>面積や人口はおおよその値です。歴史の評価や年代には諸説あるものも含まれます。</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var tabs=[document.getElementById('t-same'),document.getElementById('t-diff')];
+  var panes=[document.getElementById('p-same'),document.getElementById('p-diff')];
+  function sel(i){tabs.forEach(function(t,j){t.setAttribute('aria-selected',j===i?'true':'false');t.tabIndex=j===i?0:-1;panes[j].hidden=j!==i;});}
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){sel(i);});
+    t.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();var n=(i+1)%2;sel(n);tabs[n].focus();}});
+  });
+  sel(0);
+})();
+</script>
+
+</body>
+</html>

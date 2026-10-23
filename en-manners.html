@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>html{color-scheme:light}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Before the Ger Threshold</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Antique&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Sans:wght@500&display=swap">
+<style>
+/* Layout: exhibit panels: steppe sky hero, ger floor plan, then alternating illustration + manners chapters */
+:root{
+  --sky:#2a5ca8;        /* blue sky (Tengri) */
+  --sky-deep:#173b73;
+  --felt:#f7f8fa;       /* white ger felt */
+  --steppe:#dfe7d6;     /* autumn steppe */
+  --door:#c8572b;       /* ger door vermilion */
+  --gold:#d9a441;       /* ornament gold */
+  --bg:#f1f4f8;
+  --surface:#ffffff;
+  --ink:#1b2333;
+  --muted:#566173;
+  --line:#d3dae5;
+  --taboo-bg:#fbeee8;
+  --taboo-ink:#9c3a14;
+  --ok-bg:#e6efe3;
+  --ok-ink:#2f6431;
+  --f-display:"Zen Antique","Hiragino Mincho ProN","Yu Mincho",serif;
+  --f-body:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",sans-serif;
+  --f-term:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --sky:#6f9ce0;--sky-deep:#0f1d36;--felt:#e9edf3;--steppe:#2a3527;--door:#e27a4d;--gold:#e2b75c;
+  --bg:#0e1420;--surface:#161e2d;--ink:#e6ebf3;--muted:#9aa6b8;--line:#2b3649;
+  --taboo-bg:#3a2119;--taboo-ink:#f1a283;--ok-bg:#1f3220;--ok-ink:#9fd19b;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --sky:#6f9ce0;--sky-deep:#0f1d36;--felt:#e9edf3;--steppe:#2a3527;--door:#e27a4d;--gold:#e2b75c;
+  --bg:#0e1420;--surface:#161e2d;--ink:#e6ebf3;--muted:#9aa6b8;--line:#2b3649;
+  --taboo-bg:#3a2119;--taboo-ink:#f1a283;--ok-bg:#1f3220;--ok-ink:#9fd19b;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.85}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;text-wrap:balance;margin:0;line-height:1.35}
+p{margin:0}
+.term{font-family:var(--f-term);font-size:.82em;letter-spacing:.02em;color:var(--sky);white-space:nowrap}
+
+/* hero */
+.hero{background:var(--sky-deep);color:#f2f5fa;position:relative;overflow:hidden}
+.hero .wrap{padding-block:56px 0;display:grid;gap:28px}
+.eyebrow{font-size:.8rem;letter-spacing:.18em;color:var(--gold)}
+.hero h1{font-size:clamp(2.1rem,6vw,3.8rem)}
+.hero .lead{max-width:36em;color:#cdd7e6;font-size:1.02rem}
+.hero svg{display:block;width:100%;height:auto;max-width:100%}
+.hero-art .grass{fill:var(--steppe)}
+.hero-art .hill{fill:#5d7a4f;opacity:.55}
+.hero-art .felt{fill:#f7f8fa}
+.hero-art .roof{fill:#e8ecf2}
+.hero-art .band{fill:var(--door)}
+.hero-art .doorc{fill:var(--door)}
+.hero-art .gold{fill:var(--gold)}
+.hero-art .smoke{fill:none;stroke:#cdd7e6;stroke-width:3;stroke-linecap:round;opacity:.6}
+.hero-art .sun{fill:var(--gold);opacity:.9}
+
+/* keys */
+.keys{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:-1px}
+.key{background:var(--surface);padding:18px 18px 20px;display:grid;gap:4px}
+.key b{font-family:var(--f-display);font-weight:400;font-size:1.35rem;color:var(--sky)}
+.key span{font-size:.88rem;color:var(--muted);line-height:1.6}
+.keys-sec{padding-block:36px 8px}
+.keys-sec h2{font-size:1.1rem;margin-bottom:14px;color:var(--muted);font-family:var(--f-body);font-weight:500;letter-spacing:.08em}
+
+/* section */
+section.ch{padding-block:56px;border-bottom:1px solid var(--line)}
+.ch-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:26px}
+.ch-head h2{font-size:clamp(1.6rem,3.6vw,2.3rem)}
+.ch-head .mn{font-family:var(--f-term);color:var(--muted);font-size:.95rem}
+.grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px;align-items:start}
+section.ch:nth-of-type(even) .grid{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+section.ch:nth-of-type(even) figure{order:2}
+figure{margin:0;display:grid;gap:10px;position:sticky;top:16px}
+.plate{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;aspect-ratio:4/3;max-width:100%;position:relative}
+.plate svg,.plate img{width:100%;height:100%;display:block;object-fit:cover}
+figcaption{font-size:.85rem;color:var(--muted);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
+.swap{font:inherit;font-size:.8rem;color:var(--sky);background:none;border:1px dashed var(--sky);border-radius:999px;padding:3px 12px;cursor:pointer}
+.swap:hover{background:var(--bg)}
+.swap:focus-visible,.qopt:focus-visible{outline:2px solid var(--door);outline-offset:2px}
+
+.items{display:grid;gap:18px;list-style:none;margin:0;padding:0}
+.items li{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}
+.tag{font-size:.72rem;font-weight:700;letter-spacing:.06em;padding:2px 9px;border-radius:4px;margin-top:5px;white-space:nowrap}
+.tag.no{background:var(--taboo-bg);color:var(--taboo-ink)}
+.tag.do{background:var(--ok-bg);color:var(--ok-ink)}
+.items h3{font-family:var(--f-body);font-weight:700;font-size:1.02rem}
+.items p{color:var(--muted);font-size:.95rem;max-width:34em}
+
+/* plan svg */
+.plan .floor{fill:var(--felt);stroke:var(--line);stroke-width:2}
+.plan .ring{fill:none;stroke:var(--sky);stroke-width:1;stroke-dasharray:3 5;opacity:.6}
+.plan .west{fill:var(--sky);opacity:.10}
+.plan .east{fill:var(--door);opacity:.10}
+.plan .north{fill:var(--gold);opacity:.22}
+.plan .hearth{fill:var(--door)}
+.plan .pillar{fill:var(--ink)}
+.plan .door{fill:var(--door)}
+.plan .arrow{fill:none;stroke:var(--sky);stroke-width:3;stroke-linecap:round}
+.plan .arrowhead{fill:var(--sky)}
+.plan text{fill:var(--ink);font-family:var(--f-body);font-size:13px}
+.plan .lbl-s{fill:var(--muted);font-size:11px;font-family:var(--f-term)}
+.plan .bg{fill:var(--surface)}
+
+/* illustration tokens */
+.ill .bg{fill:var(--surface)}
+.ill .soft{fill:var(--steppe)}
+.ill .sky{fill:var(--sky)}
+.ill .door{fill:var(--door)}
+.ill .gold{fill:var(--gold)}
+.ill .ink{fill:var(--ink)}
+.ill .felt{fill:var(--felt);stroke:var(--line);stroke-width:2}
+.ill .stroke{fill:none;stroke:var(--ink);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.ill .muted{fill:var(--muted)}
+
+/* quiz */
+.quiz{padding-block:60px}
+.quiz h2{font-size:clamp(1.6rem,3.6vw,2.3rem);margin-bottom:8px}
+.quiz .sub{color:var(--muted);margin-bottom:26px}
+.qlist{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;display:grid;gap:12px;align-content:start}
+.q p.qt{font-weight:500}
+.qbtns{display:flex;gap:10px}
+.qopt{flex:1;font:inherit;font-family:var(--f-display);font-size:1.4rem;padding:6px 0;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.qopt:hover{border-color:var(--sky)}
+.qopt[aria-pressed="true"].right{background:var(--ok-bg);color:var(--ok-ink);border-color:var(--ok-ink)}
+.qopt[aria-pressed="true"].wrong{background:var(--taboo-bg);color:var(--taboo-ink);border-color:var(--taboo-ink)}
+.qa{font-size:.9rem;color:var(--muted)}
+.score{margin-top:20px;font-family:var(--f-display);font-size:1.3rem;color:var(--sky)}
+
+footer{background:var(--sky-deep);color:#cdd7e6;font-size:.85rem}
+footer .wrap{padding-block:30px;display:grid;gap:6px}
+.ornament{height:14px;background:
+  radial-gradient(circle at 7px 7px,var(--gold) 3px,transparent 3.5px) 0 0/28px 14px,
+  linear-gradient(var(--door),var(--door)) 0 6px/100% 2px no-repeat}
+
+@media (max-width:820px){
+  .grid,section.ch:nth-of-type(even) .grid{grid-template-columns:minmax(0,1fr);gap:24px}
+  section.ch:nth-of-type(even) figure{order:0}
+  figure{position:static}
+  .keys{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:420px){.keys{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:no-preference){
+  .hero-art .smoke{animation:drift 6s ease-in-out infinite}
+  @keyframes drift{50%{transform:translateY(-6px);opacity:.3}}
+}
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">МОНГОЛ ЁС ЗАНШИЛ · MONGOLIAN ETIQUETTE AND TABOOS</div>
+    <h1>Before you step<br>over the threshold</h1>
+    <p class="lead">In Mongolia, respect for fire, water, the sky and elders lives on in everyday gestures. Here are the manners every visitor should know, and the things you should never do.</p>
+    <svg class="hero-art" viewBox="0 0 1000 300" role="img" aria-label="Illustration of gers on the steppe">
+      <circle class="sun" cx="840" cy="70" r="34"/>
+      <path class="hill" d="M0 210 Q200 150 420 200 T820 180 T1000 195 V300 H0Z"/>
+      <path class="grass" d="M0 240 Q250 215 520 238 T1000 230 V300 H0Z"/>
+      <g transform="translate(330,118)">
+        <path class="smoke" d="M150 -10 q10 -20 0 -40 q-10 -20 4 -40"/>
+        <path class="roof" d="M10 70 Q150 -10 290 70Z"/>
+        <rect class="felt" x="10" y="68" width="280" height="80" rx="4"/>
+        <rect class="band" x="10" y="84" width="280" height="5"/>
+        <rect class="band" x="10" y="130" width="280" height="5"/>
+        <rect class="doorc" x="128" y="92" width="44" height="56" rx="2"/>
+        <rect class="gold" x="134" y="100" width="32" height="3"/>
+        <rect class="gold" x="134" y="138" width="32" height="3"/>
+        <circle class="gold" cx="150" cy="120" r="7"/>
+      </g>
+      <g transform="translate(700,170) scale(.55)">
+        <path class="roof" d="M10 70 Q150 -10 290 70Z"/>
+        <rect class="felt" x="10" y="68" width="280" height="80" rx="4"/>
+        <rect class="band" x="10" y="84" width="280" height="5"/>
+        <rect class="doorc" x="128" y="92" width="44" height="56" rx="2"/>
+      </g>
+    </svg>
+  </div>
+</header>
+<div class="ornament" aria-hidden="true"></div>
+
+<div class="wrap keys-sec">
+  <h2>Four things to remember first</h2>
+  <div class="keys">
+    <div class="key"><b>Clockwise</b><span>In a ger or a temple, move left to right, following the sun</span></div>
+    <div class="key"><b>Right hand</b><span>Give and take with your right hand. Support your right elbow with your left to be extra polite</span></div>
+    <div class="key"><b>Fire and water</b><span>The hearth and running water are sacred. Never dirty them or step over them</span></div>
+    <div class="key"><b>Elders</b><span>Offer them the seat and the food first, and don't interrupt them</span></div>
+  </div>
+</div>
+
+<main class="wrap">
+
+<section class="ch" id="ger">
+  <div class="ch-head"><h2>Visiting a ger</h2><span class="mn">Гэрт зочлох</span></div>
+  <div class="grid">
+    <figure>
+      <div class="plate" data-slot="ger">
+        <svg class="plan" viewBox="0 0 400 300" role="img" aria-label="Floor plan of a ger. Door faces south, men sit on the west, women on the east, and the place of honor is at the back">
+          <rect class="bg" width="400" height="300"/>
+          <circle class="floor" cx="200" cy="150" r="125"/>
+          <path class="west" d="M200 150 L75 150 A125 125 0 0 1 120 54 Z"/>
+          <path class="west" d="M200 150 L75 150 A125 125 0 0 0 130 254 Z"/>
+          <path class="east" d="M200 150 L325 150 A125 125 0 0 0 280 54 Z"/>
+          <path class="east" d="M200 150 L325 150 A125 125 0 0 1 270 254 Z"/>
+          <path class="north" d="M200 150 L120 54 A125 125 0 0 1 280 54 Z"/>
+          <circle class="ring" cx="200" cy="150" r="95"/>
+          <path class="arrow" d="M160 262 A110 110 0 0 1 92 132"/>
+          <path class="arrow" d="M108 86 A110 110 0 0 1 292 86"/>
+          <path class="arrowhead" d="M292 86 l-12 -4 l4 12z"/>
+          <circle class="hearth" cx="200" cy="150" r="14"/>
+          <circle class="pillar" cx="178" cy="122" r="5"/>
+          <circle class="pillar" cx="222" cy="122" r="5"/>
+          <rect class="door" x="182" y="270" width="36" height="10" rx="2"/>
+          <text x="200" y="76" text-anchor="middle">Place of honor</text>
+          <text x="200" y="92" text-anchor="middle" class="lbl-s">хоймор (khoimor)</text>
+          <text x="118" y="165" text-anchor="middle">West · men</text>
+          <text x="282" y="165" text-anchor="middle">East · women</text>
+          <text x="200" y="182" text-anchor="middle" class="lbl-s">hearth тулга</text>
+          <text x="244" y="112" class="lbl-s">pillars багана</text>
+          <text x="200" y="296" text-anchor="middle" class="lbl-s">door (south) · threshold босго</text>
+        </svg>
+      </div>
+      <figcaption><span>Inside a ger. The door faces south and you move clockwise</span><button class="swap" type="button" data-for="ger">Replace with photo</button></figcaption>
+    </figure>
+    <ul class="items">
+      <li><span class="tag do">DO</span><div><h3>Call out “Nokhoi khorio!” from outside</h3><p>Herders keep guard dogs. Shout <span class="term">Нохой хорио!</span> (“Hold the dog!”) and wait for someone to come out.</p></div></li>
+      <li><span class="tag no">TABOO</span><div><h3>Stepping or sitting on the threshold</h3><p>The threshold (<span class="term">босго</span>) guards the family's luck. Stepping on it tramples their good fortune. Step over it.</p></div></li>
+      <li><span class="tag do">DO</span><div><h3>Go left once inside, and move clockwise</h3><p>By tradition, men sit on the west side (left as you enter) and women on the east (right).</p></div></li>
+      <li><span class="tag no">TABOO</span><div><h3>Taking the seat of honor uninvited</h3><p>The back of the ger (<span class="term">хоймор</span>) holds the family altar and heirlooms. It is the seat for elders and honored guests.</p></div></li>
+      <li><span class="tag no">TABOO</span><div><h3>Walking between the two pillars or leaning on them</h3><p>The pillars (<span class="term">багана</span>) hold up the roof and link the home to the sky. Don't pass between them or lean on them.</p></div></li>
+      <li><span class="tag no">TABOO</span><div><h3>Entering with rolled-up sleeves</h3><p>It looks like you're ready for a fight. Roll your sleeves down before you go in.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="ch" id="fire">
+  <div class="ch-head"><h2>Fire and water are sacred</h2><span class="mn">Гал ба ус</span></div>
+  <div class="grid">
+    <figure>
+      <div class="plate" data-slot="fire">
+        <svg class="ill" viewBox="0 0 400 300" role="img" aria-label="Illustration of a hearth fire and a flowing river">
+          <rect class="bg" width="400" height="300"/>
+          <path class="soft" d="M0 230 Q200 200 400 230 V300 H0Z"/>
+          <path class="sky" opacity=".75" d="M230 300 Q270 250 260 230 Q300 220 400 225 V300Z"/>
+          <path class="stroke" d="M250 270 q20 -6 40 0 t40 0"/>
+          <rect class="ink" x="80" y="196" width="120" height="14" rx="3"/>
+          <rect class="ink" x="92" y="210" width="8" height="30"/>
+          <rect class="ink" x="180" y="210" width="8" height="30"/>
+          <path class="door" d="M140 196 C100 170 112 128 140 92 C150 126 178 140 166 172 C176 162 182 150 180 140 C198 166 186 190 140 196Z"/>
+          <path class="gold" d="M140 196 C122 182 126 160 142 140 C150 160 162 168 154 188 Z"/>
+          <circle class="sky" cx="300" cy="120" r="22" opacity=".8"/>
+          <path class="sky" opacity=".8" d="M300 70 L320 112 A22 22 0 0 1 280 112 Z"/>
+        </svg>
+      </div>
+      <figcaption><span>The hearth (<span class="term">гал голомт</span>) is the heart of the home</span><button class="swap" type="button" data-for="fire">Replace with photo</button></figcaption>
+    </figure>
+    <ul class="items">
+      <li><span class="tag no">TABOO</span><div><h3>Throwing trash into the fire or pouring water on it</h3><p>A fire spirit is believed to live in the hearth and protect the family. Dirtying it insults the home itself.</p></div></li>
+      <li><span class="tag no">TABOO</span><div><h3>Pointing your feet at the fire or stepping over it</h3><p>When you sit, keep your feet from pointing toward the hearth.</p></div></li>
+      <li><span class="tag no">TABOO</span><div><h3>Pointing a blade at the fire</h3><p>Poking the fire with a knife, or turning a blade toward it, is said to wound the fire spirit.</p></div></li>
+      <li><span class="tag no">TABOO</span><div><h3>Polluting rivers and springs</h3><p>Washing clothes, urinating or dumping trash in running water is a serious wrong. On the steppe, water is life.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="ch" id="food">
+  <div class="ch-head"><h2>Accepting hospitality</h2><span class="mn">Зочлох ёс</span></div>
+  <div class="grid">
+    <figure>
+      <div class="plate" data-slot="food">
+        <svg class="ill" viewBox="0 0 400 300" role="img" aria-label="Taking a bowl of tea with the right hand, left hand supporting the right elbow">
+          <rect class="bg" width="400" height="300"/>
+          <ellipse class="soft" cx="200" cy="250" rx="170" ry="26"/>
+          <path class="felt" d="M140 120 h120 q-6 66 -60 70 q-54 -4 -60 -70Z"/>
+          <rect class="sky" x="146" y="132" width="108" height="8"/>
+          <path class="gold" d="M150 120 h100 v6 h-100z"/>
+          <path class="stroke" d="M180 100 q8 -14 0 -28 M210 100 q8 -14 0 -28"/>
+          <path class="door" d="M110 230 C150 210 190 200 210 190 L224 204 C200 222 160 240 120 250Z"/>
+          <path class="door" opacity=".6" d="M40 260 C70 240 96 236 118 236 L124 252 C100 258 72 266 48 276Z"/>
+          <path class="stroke" d="M118 236 C130 230 140 226 150 222"/>
+          <text x="40" y="44" class="muted" font-size="14" font-family="IBM Plex Sans, sans-serif">сүүтэй цай</text>
+          <text x="40" y="64" class="muted" font-size="13">salty milk tea</text>
+        </svg>
+      </div>
+      <figcaption><span>Take it with your right hand, left hand under your right elbow</span><button class="swap" type="button" data-for="food">Replace with photo</button></figcaption>
+    </figure>
+    <ul class="items">
+      <li><span class="tag do">DO</span><div><h3>Accept with your right hand or both hands</h3><p>Take tea (<span class="term">сүүтэй цай</span>) and food with your right hand. To show extra respect, support your right elbow with your left hand.</p></div></li>
+      <li><span class="tag do">DO</span><div><h3>Taste a little of everything you're offered</h3><p>Refusing is rude. You don't have to finish it, just take a sip or a bite before setting it down.</p></div></li>
+      <li><span class="tag do">DO</span><div><h3>Flick vodka three times with your ring finger</h3><p>An offering to the sky, the earth and the ancestors. If you don't drink, touch the glass to your lips and hand it back. That's perfectly polite.</p></div></li>
+      <li><span class="tag no">TABOO</span><div><h3>Giving or taking with only your left hand</h3><p>Using just the left hand comes across as disrespectful.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="ch" id="body">
+  <div class="ch-head"><h2>Gestures and the body</h2><span class="mn">Биеийн хэлэмж</span></div>
+  <div class="grid">
+    <figure>
+      <div class="plate" data-slot="body">
+        <svg class="ill" viewBox="0 0 400 300" role="img" aria-label="A Mongolian hat and two hands shaking">
+          <rect class="bg" width="400" height="300"/>
+          <path class="soft" d="M0 240 Q200 220 400 240 V300 H0Z"/>
+          <path class="door" d="M70 170 Q130 60 190 170Z"/>
+          <ellipse class="gold" cx="130" cy="172" rx="76" ry="14"/>
+          <circle class="gold" cx="130" cy="88" r="9"/>
+          <path class="sky" d="M128 78 l4 0 l14 -40 l-6 -2z"/>
+          <path class="stroke" d="M100 140 h60"/>
+          <path class="felt" d="M220 190 C240 170 262 166 286 170 L300 186 C280 196 256 204 232 210Z"/>
+          <path class="door" opacity=".7" d="M360 180 C340 170 316 168 292 172 L284 190 C304 198 330 204 352 206Z"/>
+          <path class="stroke" d="M268 174 q14 4 28 14"/>
+          <text x="214" y="250" class="muted" font-size="13">Bumped feet? Shake hands</text>
+        </svg>
+      </div>
+      <figcaption><span>A hat carries its owner's dignity</span><button class="swap" type="button" data-for="body">Replace with photo</button></figcaption>
+    </figure>
+    <ul class="items">
+      <li><span class="tag do">DO</span><div><h3>Shake hands if your feet touch</h3><p>If you accidentally step on or kick someone's foot, shake hands right away. Leaving it is said to invite a quarrel.</p></div></li>
+      <li><span class="tag no">TABOO</span><div><h3>Touching someone's hat or putting it on the floor</h3><p>A hat is sacred, like the head. Don't step on it or over it either.</p></div></li>
+      <li><span class="tag no">TABOO</span><div><h3>Touching someone's head</h3><p>The head is seen as the seat of the soul, not something to touch casually.</p></div></li>
+      <li><span class="tag no">TABOO</span><div><h3>Pointing at people with one finger</h3><p>To show a direction or a person, use your whole hand, palm up.</p></div></li>
+      <li><span class="tag do">DO</span><div><h3>Hand over a knife handle first</h3><p>Pointing the blade at someone signals hostility.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="ch" id="faith">
+  <div class="ch-head"><h2>At sacred places</h2><span class="mn">Овоо ба хадаг</span></div>
+  <div class="grid">
+    <figure>
+      <div class="plate" data-slot="faith">
+        <svg class="ill" viewBox="0 0 400 300" role="img" aria-label="An ovoo, a sacred stone cairn tied with blue scarves">
+          <rect class="bg" width="400" height="300"/>
+          <path class="soft" d="M0 230 Q200 205 400 230 V300 H0Z"/>
+          <path class="muted" opacity=".55" d="M110 236 L150 170 L250 170 L290 236Z"/>
+          <path class="muted" opacity=".75" d="M140 186 L170 130 L230 130 L260 186Z"/>
+          <path class="muted" d="M165 140 L185 100 L215 100 L235 140Z"/>
+          <rect class="ink" x="197" y="40" width="6" height="66"/>
+          <path class="sky" d="M203 50 C236 60 250 52 270 66 C250 74 236 70 203 64Z"/>
+          <path class="sky" opacity=".7" d="M197 62 C170 70 156 64 136 78 C156 86 170 80 197 76Z"/>
+          <path class="stroke" d="M90 262 A140 30 0 1 0 310 262" stroke-dasharray="6 8"/>
+          <path class="ink" d="M310 262 l-12 -6 l2 12z"/>
+          <text x="40" y="44" class="muted" font-size="14" font-family="IBM Plex Sans, sans-serif">овоо</text>
+          <text x="40" y="64" class="muted" font-size="13">walk around 3 times, clockwise</text>
+        </svg>
+      </div>
+      <figcaption><span>An ovoo, a sacred cairn on a pass or hilltop</span><button class="swap" type="button" data-for="faith">Replace with photo</button></figcaption>
+    </figure>
+    <ul class="items">
+      <li><span class="tag do">DO</span><div><h3>Walk around an ovoo three times clockwise and add a stone</h3><p>A custom to pray for a safe journey. Drivers passing by sometimes honk in greeting.</p></div></li>
+      <li><span class="tag do">DO</span><div><h3>Offer a khadag with both hands</h3><p>The blue silk scarf (<span class="term">хадаг</span>) is a gift of respect in the color of the sky. Present it with the fold facing the receiver.</p></div></li>
+      <li><span class="tag do">DO</span><div><h3>Clockwise at temples and prayer wheels too</h3><p>Walk around stupas and spin prayer wheels in the direction of the sun.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="ch" id="tsagaan">
+  <div class="ch-head"><h2>Lunar New Year: Tsagaan Sar</h2><span class="mn">Цагаан сар</span></div>
+  <div class="grid">
+    <figure>
+      <div class="plate" data-slot="tsagaan">
+        <svg class="ill" viewBox="0 0 400 300" role="img" aria-label="Zolgokh greeting: the younger person supports the elder's arms from below">
+          <rect class="bg" width="400" height="300"/>
+          <circle class="gold" cx="320" cy="70" r="26" opacity=".5"/>
+          <path class="soft" d="M0 250 Q200 232 400 250 V300 H0Z"/>
+          <circle class="sky" cx="130" cy="96" r="22"/>
+          <path class="sky" d="M100 124 h60 l12 120 h-84z"/>
+          <circle class="door" cx="270" cy="104" r="20"/>
+          <path class="door" d="M242 130 h56 l10 114 h-76z"/>
+          <path class="stroke" d="M160 150 C190 160 214 160 242 152"/>
+          <path class="stroke" d="M162 176 C192 168 214 168 240 174"/>
+          <text x="96" y="278" class="muted" font-size="12">Elder</text>
+          <text x="248" y="278" class="muted" font-size="12">Younger</text>
+          <text x="40" y="44" class="muted" font-size="14" font-family="IBM Plex Sans, sans-serif">золгох</text>
+        </svg>
+      </div>
+      <figcaption><span>In zolgokh, the younger person supports the elder's arms</span><button class="swap" type="button" data-for="tsagaan">Replace with photo</button></figcaption>
+    </figure>
+    <ul class="items">
+      <li><span class="tag do">DO</span><div><h3>Greet elders by supporting their arms from below</h3><p>In the New Year greeting <span class="term">золгох</span>, the younger person holds out both arms under the elder's arms and they touch cheeks. It shows respect by literally supporting the elder.</p></div></li>
+      <li><span class="tag do">DO</span><div><h3>Celebrate with white foods</h3><p>“Tsagaan Sar” means “White Month”, and dairy stands for purity. Visitors are welcomed with dairy foods and buuz, steamed dumplings.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="ch" id="talk">
+  <div class="ch-head"><h2>Careful in conversation</h2><span class="mn">Яриа</span></div>
+  <div class="grid">
+    <figure>
+      <div class="plate" data-slot="talk">
+        <svg class="ill" viewBox="0 0 400 300" role="img" aria-label="The endless knot, a Mongolian symbol of good fortune">
+          <rect class="bg" width="400" height="300"/>
+          <g transform="translate(200,150)">
+            <circle class="sky" r="92" opacity=".12"/>
+            <path class="stroke" d="M-46 -46 h92 v92 h-92z M-23 -69 v138 M23 -69 v138 M-69 -23 h138 M-69 23 h138" />
+            <circle class="door" r="12"/>
+            <circle class="gold" cx="-69" cy="-23" r="6"/><circle class="gold" cx="69" cy="23" r="6"/>
+            <circle class="gold" cx="-23" cy="69" r="6"/><circle class="gold" cx="23" cy="-69" r="6"/>
+          </g>
+          <text x="200" y="282" text-anchor="middle" class="muted" font-size="13">The endless knot · <tspan font-family="IBM Plex Sans, sans-serif">өлзий</tspan></text>
+        </svg>
+      </div>
+      <figcaption><span>A knot with no end, for eternity and prosperity</span><button class="swap" type="button" data-for="talk">Replace with photo</button></figcaption>
+    </figure>
+    <ul class="items">
+      <li><span class="tag no">TABOO</span><div><h3>Talking as if Mongolia were part of China or Russia</h3><p>Mongolians are proud of their independence. Keep Mongolia distinct from Inner Mongolia, an autonomous region of China.</p></div></li>
+      <li><span class="tag no">TABOO</span><div><h3>Making light of Genghis Khan</h3><p>He is deeply honored as the founder of the nation. Don't make him the butt of a joke.</p></div></li>
+      <li><span class="tag do">DO</span><div><h3>Put elders first</h3><p>Don't interrupt them, and offer seats and food to the eldest first. People often add a respectful term after an elder's name.</p></div></li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<section class="wrap quiz" id="quiz" aria-labelledby="quiz-h">
+  <h2 id="quiz-h">True or false challenge</h2>
+  <p class="sub">Try it at the booth. In a Mongolian home, is this OK?</p>
+  <div class="qlist" id="qlist"></div>
+  <p class="score" id="score" aria-live="polite"></p>
+</section>
+
+<footer>
+  <div class="ornament" aria-hidden="true"></div>
+  <div class="wrap">
+    <p>Customs vary a little by region and family. When in doubt, follow what the people around you do.</p>
+    <p>Photos loaded with “Replace with photo” appear only on this screen. They are not saved or sent anywhere.</p>
+  </div>
+</footer>
+
+<input type="file" id="photo-input" accept="image/*" hidden>
+
+<script>
+(function(){
+  var input=document.getElementById('photo-input'),target=null;
+  document.querySelectorAll('.swap').forEach(function(b){
+    b.addEventListener('click',function(){target=b.getAttribute('data-for');input.value='';input.click();});
+  });
+  input.addEventListener('change',function(){
+    var f=input.files&&input.files[0];if(!f||!target)return;
+    var r=new FileReader();
+    r.onload=function(){
+      var plate=document.querySelector('.plate[data-slot="'+target+'"]');
+      var img=document.createElement('img');img.src=r.result;img.alt='';
+      plate.innerHTML='';plate.appendChild(img);
+    };
+    r.readAsDataURL(f);
+  });
+
+  var Q=[
+    ["Stepping on the ger's threshold as you enter",false,"The threshold guards the family's luck. Step over it."],
+    ["Taking tea with your right hand",true,"Use your right hand, or support your right elbow with your left."],
+    ["Throwing scrap paper into the hearth",false,"Fire is sacred. Never put trash in it."],
+    ["Shaking hands after stepping on someone's foot",true,"An important custom to avoid a quarrel."],
+    ["Moving counterclockwise inside the ger",false,"Go left once inside and move clockwise."],
+    ["Walking around an ovoo three times clockwise",true,"Add a small stone and pray for a safe journey."]
+  ];
+  var list=document.getElementById('qlist'),score=document.getElementById('score'),answered=0,right=0;
+  Q.forEach(function(q,i){
+    var d=document.createElement('div');d.className='q';
+    d.innerHTML='<p class="qt">'+q[0]+'</p><div class="qbtns"><button type="button" class="qopt" id="q'+i+'o" aria-pressed="false" aria-label="OK">○</button><button type="button" class="qopt" id="q'+i+'x" aria-pressed="false" aria-label="Not OK">×</button></div><p class="qa" hidden></p>';
+    list.appendChild(d);
+    var btns=d.querySelectorAll('.qopt'),ans=d.querySelector('.qa'),done=false;
+    btns.forEach(function(b,j){
+      b.addEventListener('click',function(){
+        if(done)return;done=true;
+        var pick=(j===0),ok=(pick===q[1]);
+        b.setAttribute('aria-pressed','true');b.classList.add(ok?'right':'wrong');
+        ans.hidden=false;ans.textContent=(ok?'Correct. ':'Not quite. ')+q[2];
+        answered++;if(ok)right++;
+        if(answered===Q.length)score.textContent=right+' out of '+Q.length+' correct'+(right===Q.length?'. You are a master of steppe manners!':'');
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

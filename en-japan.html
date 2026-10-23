@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>html{color-scheme:light}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Mongolia and Japan</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;800&family=Noto+Sans+JP:wght@400;500;700&family=IBM+Plex+Sans+Condensed:wght@500;600&display=swap">
+<style>
+/* Layout: one center line splits Japan and Mongolia; numbers, culture, compare, timeline */
+:root{
+  --bg:#f5f6f8;
+  --surface:#ffffff;
+  --ink:#18202c;
+  --muted:#5a6475;
+  --line:#d6dbe3;
+  --jp:#b8323a;      /* Japan: flag red */
+  --mn:#1f5aa6;      /* Mongolia: flag blue */
+  --gold:#c9932e;    /* Soyombo gold */
+  --jp-soft:#f7e6e7;
+  --mn-soft:#e4ecf8;
+  --f-display:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;
+  --f-body:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;
+  --f-label:"IBM Plex Sans Condensed","Arial Narrow",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#10141b;--surface:#171d27;--ink:#e7ebf2;--muted:#a1abbb;--line:#2a3342;
+  --jp:#e66a70;--mn:#78a6e6;--gold:#e0b35a;--jp-soft:#2d1a1d;--mn-soft:#17243a;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10141b;--surface:#171d27;--ink:#e7ebf2;--muted:#a1abbb;--line:#2a3342;
+  --jp:#e66a70;--mn:#78a6e6;--gold:#e0b35a;--jp-soft:#2d1a1d;--mn-soft:#17243a;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.85}
+.wrap{max-width:1060px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);font-weight:800;line-height:1.35;margin:0;text-wrap:balance}
+p{margin:0}
+.lbl{font-family:var(--f-label);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.jp{color:var(--jp)}.mn{color:var(--mn)}
+.cyr{font-family:var(--f-label);font-weight:500;letter-spacing:.03em}
+
+/* hero */
+.hero .wrap{padding-block:56px 32px;display:grid;gap:18px;text-align:left}
+.series{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.chip{font-family:var(--f-label);font-size:.78rem;letter-spacing:.1em;border:1.5px solid var(--ink);border-radius:999px;padding:2px 12px}
+.hero h1{font-size:clamp(2.3rem,7vw,4.4rem)}
+.hero h1 .amp{font-weight:600;color:var(--gold);padding:0 .15em}
+.hero .lead{max-width:36em;color:var(--muted);font-size:1.05rem}
+
+/* split numbers */
+.split{display:grid;grid-template-columns:1fr auto 1fr;gap:0;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.split .side{padding:20px 22px;display:grid;gap:14px;min-width:0}
+.split .side.jpS{text-align:right}
+.split .mid{background:var(--line);width:1px}
+.split .head{font-family:var(--f-display);font-size:1.3rem}
+.stat{display:grid;gap:0}
+.stat b{font-family:var(--f-label);font-weight:600;font-size:clamp(1.4rem,3.6vw,2rem);font-variant-numeric:tabular-nums;line-height:1.2}
+.stat span{font-size:.82rem;color:var(--muted)}
+.split-note{font-size:.82rem;color:var(--muted);margin-top:10px}
+
+/* sections */
+section.sec{padding-block:56px;border-top:1px solid var(--line)}
+.sec-head{display:grid;gap:6px;margin-bottom:28px;max-width:40em}
+.sec-head h2{font-size:clamp(1.6rem,4vw,2.4rem)}
+.sec-head p{color:var(--muted)}
+
+/* culture grid */
+.cult{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.c{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px;display:grid;gap:8px;align-content:start;min-width:0}
+.c h3{font-size:1.2rem}
+.c .cyr{color:var(--mn);font-size:.85rem}
+.c p{font-size:.94rem;color:var(--muted)}
+.c p b{color:var(--ink);font-weight:500}
+
+/* compare */
+.tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.tab{font:inherit;font-weight:700;padding:9px 20px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;min-height:42px}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tab:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.rows{display:grid;gap:14px}
+.row{display:grid;grid-template-columns:minmax(0,1fr) 170px minmax(0,1fr);background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.row .t{grid-column:2;grid-row:1;display:grid;place-content:center;text-align:center;padding:14px 10px;border-left:1px solid var(--line);border-right:1px solid var(--line);font-family:var(--f-display);font-size:1.05rem;line-height:1.4}
+.row .a{grid-column:1;grid-row:1;padding:16px 20px;background:var(--jp-soft);text-align:right}
+.row .b{grid-column:3;grid-row:1;padding:16px 20px;background:var(--mn-soft)}
+.row .a small,.row .b small{display:block;font-family:var(--f-label);font-size:.7rem;letter-spacing:.12em;margin-bottom:2px}
+.row .a small{color:var(--jp)}.row .b small{color:var(--mn)}
+.row p{font-size:.93rem}
+.row.same .t::after{content:"IN COMMON";display:block;font-family:var(--f-label);font-size:.7rem;letter-spacing:.12em;color:var(--gold);margin-top:2px}
+.row.diff .t::after{content:"DIFFERENT";display:block;font-family:var(--f-label);font-size:.7rem;letter-spacing:.12em;color:var(--muted);margin-top:2px}
+
+/* timeline */
+.tl{list-style:none;margin:0;padding:0;display:grid;gap:0;position:relative}
+.tl::before{content:"";position:absolute;left:96px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl li{display:grid;grid-template-columns:84px 24px minmax(0,1fr);gap:0 12px;padding-block:12px}
+.tl .y{font-family:var(--f-label);font-weight:600;font-size:1rem;text-align:right;font-variant-numeric:tabular-nums;padding-top:1px}
+.tl .dot{width:14px;height:14px;border-radius:50%;background:var(--surface);border:3px solid var(--mn);margin:6px 0 0 -1px;position:relative;z-index:1}
+.tl li.link .dot{border-color:var(--jp);background:var(--jp)}
+.tl h3{font-family:var(--f-body);font-weight:700;font-size:1rem}
+.tl p{font-size:.92rem;color:var(--muted);max-width:38em}
+.tl .jtag{font-family:var(--f-label);font-size:.68rem;letter-spacing:.1em;color:var(--jp);border:1px solid var(--jp);border-radius:3px;padding:0 6px;margin-left:8px;vertical-align:2px;white-space:nowrap}
+.tl-legend{display:flex;gap:18px;font-size:.84rem;color:var(--muted);margin-bottom:12px;flex-wrap:wrap}
+.tl-legend span::before{content:"";display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px;border:3px solid var(--c)}
+.tl-legend span.j::before{background:var(--jp)}
+
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:26px;font-size:.84rem;color:var(--muted);display:grid;gap:6px}
+footer b{font-family:var(--f-display);color:var(--ink)}
+
+@media (max-width:860px){.cult{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){
+  .cult{grid-template-columns:minmax(0,1fr)}
+  .split{grid-template-columns:1fr}
+  .split .mid{width:auto;height:1px}
+  .split .side.jpS{text-align:left}
+  .row{grid-template-columns:minmax(0,1fr)}
+  .row .t{grid-column:1;grid-row:1;border:0;border-bottom:1px solid var(--line);place-content:start;text-align:left;padding:12px 18px}
+  .row .a{grid-column:1;grid-row:2;text-align:left}
+  .row .b{grid-column:1;grid-row:3}
+  .row.same .t::after,.row.diff .t::after{display:inline;margin-left:8px}
+  .tl::before{left:70px}
+  .tl li{grid-template-columns:58px 24px minmax(0,1fr)}
+  .tl .y{font-size:.9rem}
+}
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="series"><span class="chip">DIT ORIGINAL</span><span class="lbl">Culture · Customs · History</span></div>
+    <h1><span class="jp">Japan</span><span class="amp">&amp;</span><span class="mn">Mongolia</span><br>So alike, so different</h1>
+    <p class="lead">A blue birthmark on newborn babies, languages with the same word order, and sumo. Two countries that seem far apart turn out to be close. Let's compare their culture, customs and history.</p>
+
+    <div class="split" aria-label="Basic facts about Japan and Mongolia">
+      <div class="side jpS">
+        <div class="head jp">Japan</div>
+        <div class="stat"><b>~380,000 km²</b><span>Area</span></div>
+        <div class="stat"><b>~120 million</b><span>Population</span></div>
+        <div class="stat"><b>~330 / km²</b><span>Population density</span></div>
+      </div>
+      <div class="mid" aria-hidden="true"></div>
+      <div class="side">
+        <div class="head mn">Mongolia</div>
+        <div class="stat"><b>~1.56 million km²</b><span>Area (about 4× Japan)</span></div>
+        <div class="stat"><b>~3.5 million</b><span>Population (about half live in the capital)</span></div>
+        <div class="stat"><b>~2 / km²</b><span>Population density (one of the lowest in the world)</span></div>
+      </div>
+    </div>
+    <p class="split-note">Figures are approximate.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="sec" id="culture">
+  <div class="sec-head"><span class="lbl">01 Culture</span><h2>Mongolian culture: the basics</h2><p>The foundations of life on the steppe.</p></div>
+  <div class="cult">
+    <article class="c"><h3>Nomads and the five animals</h3><span class="cyr">Таван хошуу мал</span><p>Herders live with the <b>five animals</b>, horses, cattle, camels, sheep and goats, and move to new pastures with the seasons. Many nomadic families still live in the countryside.</p></article>
+    <article class="c"><h3>The ger</h3><span class="cyr">Гэр</span><p>A round home of felt stretched over a wooden frame. It can be <b>put up or taken down in a few hours</b>, so the whole house moves with the family. The capital has ger districts too.</p></article>
+    <article class="c"><h3>White food, red food</h3><span class="cyr">Цагаан идээ · Улаан идээ</span><p>Summer is the season of dairy, the <b>“white food”</b>. Winter is the season of meat, the <b>“red food”</b>. Salty milk tea is part of every day.</p></article>
+    <article class="c"><h3>Two scripts</h3><span class="cyr">Кирилл · Монгол бичиг</span><p>Everyday writing uses the <b>Cyrillic alphabet</b>, but the vertical <b>traditional Mongolian script</b> is also taught in schools and is increasingly used in official settings.</p></article>
+    <article class="c"><h3>Horsehead fiddle and throat singing</h3><span class="cyr">Морин хуур · Хөөмий</span><p>The <b>morin khuur</b>, a fiddle topped with a carved horse's head, and <b>khöömii</b>, where one singer produces two notes at once, are both UNESCO Intangible Cultural Heritage.</p></article>
+    <article class="c"><h3>Faith</h3><span class="cyr">Бурхан шашин · Бөө мөргөл</span><p><b>Tibetan Buddhism</b> is widely practiced, and <b>shamanic</b> respect for the Eternal Blue Sky (Tengri) and nature remains part of daily life.</p></article>
+  </div>
+</section>
+
+<section class="sec" id="compare">
+  <div class="sec-head"><span class="lbl">02 Compare</span><h2>What we share, and what we don't</h2><p>Japan on the left, Mongolia on the right. Switch with the tabs.</p></div>
+  <div class="tabs" role="tablist" aria-label="Type of comparison">
+    <button class="tab" role="tab" type="button" id="t-same" aria-selected="true" aria-controls="p-same">In common</button>
+    <button class="tab" role="tab" type="button" id="t-diff" aria-selected="false" aria-controls="p-diff">Different</button>
+  </div>
+
+  <div class="rows" id="p-same" role="tabpanel" aria-labelledby="t-same">
+    <div class="row same"><div class="t">The “Mongolian spot”</div>
+      <div class="a"><small>JAPAN</small><p>Many babies are born with a blue birthmark on the lower back that fades as they grow.</p></div>
+      <div class="b"><small>MONGOLIA</small><p>The mark is named after Mongolia, and almost every Mongolian baby has one.</p></div></div>
+    <div class="row same"><div class="t">Word order</div>
+      <div class="a"><small>JAPAN</small><p><i>Watashi wa gohan wo taberu</i> (I rice eat). The verb comes last.</p></div>
+      <div class="b"><small>MONGOLIA</small><p><span class="cyr">Би хоол идэнэ</span> (I food eat). Same order, with endings that work like Japanese particles.</p></div></div>
+    <div class="row same"><div class="t">Sumo</div>
+      <div class="a"><small>JAPAN</small><p>Sumo is the national sport, and several grand champions (yokozuna) have come from Mongolia.</p></div>
+      <div class="b"><small>MONGOLIA</small><p>Traditional wrestling, <span class="cyr">Бөх</span> (bökh), is the highlight of Naadam. Children grow up with it.</p></div></div>
+    <div class="row same"><div class="t">Zodiac and the lunar calendar</div>
+      <div class="a"><small>JAPAN</small><p>People draw the year's zodiac animal on New Year cards.</p></div>
+      <div class="b"><small>MONGOLIA</small><p>The same twelve animals are used, and New Year is still celebrated by the lunar calendar as Tsagaan Sar.</p></div></div>
+    <div class="row same"><div class="t">Respect for elders</div>
+      <div class="a"><small>JAPAN</small><p>People use honorific speech and offer elders the seat of honor.</p></div>
+      <div class="b"><small>MONGOLIA</small><p>Elders sit at the back of the ger, and at New Year the young support their elders' arms in greeting.</p></div></div>
+    <div class="row same"><div class="t">A textbook story</div>
+      <div class="a"><small>JAPAN</small><p>Many people read “Suho's White Horse” in elementary school.</p></div>
+      <div class="b"><small>MONGOLIA</small><p>It is based on a Mongolian folk tale about how the horsehead fiddle began.</p></div></div>
+  </div>
+
+  <div class="rows" id="p-diff" role="tabpanel" aria-labelledby="t-diff" hidden>
+    <div class="row diff"><div class="t">Sumo rules</div>
+      <div class="a"><small>JAPAN</small><p>Wrestlers fight in a ring. You lose if you step out or touch the ground with anything but your feet.</p></div>
+      <div class="b"><small>MONGOLIA</small><p>No ring and no time limit. You lose when your elbow, knee or back touches the ground.</p></div></div>
+    <div class="row diff"><div class="t">Names</div>
+      <div class="a"><small>JAPAN</small><p>A family shares one surname.</p></div>
+      <div class="b"><small>MONGOLIA</small><p>People normally go by “father's name + own name”. Clan names, similar to surnames, were revived from the 1990s.</p></div></div>
+    <div class="row diff"><div class="t">Homes</div>
+      <div class="a"><small>JAPAN</small><p>People build a house in one place and stay.</p></div>
+      <div class="b"><small>MONGOLIA</small><p>Nomads move their homes. Cities mix apartment blocks with ger districts.</p></div></div>
+    <div class="row diff"><div class="t">Food</div>
+      <div class="a"><small>JAPAN</small><p>Fish and rice. Raw fish is common.</p></div>
+      <div class="b"><small>MONGOLIA</small><p>Mutton and dairy. A landlocked country, so fish is eaten less.</p></div></div>
+    <div class="row diff"><div class="t">Tea</div>
+      <div class="a"><small>JAPAN</small><p>Green tea, drunk plain.</p></div>
+      <div class="b"><small>MONGOLIA</small><p>Tea boiled with milk and a pinch of salt.</p></div></div>
+    <div class="row diff"><div class="t">Climate</div>
+      <div class="a"><small>JAPAN</small><p>Humid, with a rainy season.</p></div>
+      <div class="b"><small>MONGOLIA</small><p>Dry and continental. Ulaanbaatar is called the coldest capital in the world, with winters below −30°C.</p></div></div>
+  </div>
+</section>
+
+<section class="sec" id="history">
+  <div class="sec-head"><span class="lbl">03 History</span><h2>A timeline of Mongolian history</h2><p>Red marks show events connected to Japan.</p></div>
+  <div class="tl-legend"><span style="--c:var(--mn)">Mongolian history</span><span class="j" style="--c:var(--jp)">Links with Japan</span></div>
+  <ol class="tl">
+    <li><span class="y">3rd c. BC</span><span class="dot"></span><div><h3>The Xiongnu build a state on the steppe</h3><p>The first great nomadic empire rises on the Mongolian Plateau.</p></div></li>
+    <li><span class="y">1206</span><span class="dot"></span><div><h3>Genghis Khan founds the Mongol Empire</h3><p>He unites the steppe tribes. The empire grows into one of the largest land empires in history.</p></div></li>
+    <li><span class="y">1271</span><span class="dot"></span><div><h3>Kublai Khan proclaims the Yuan dynasty</h3><p>Genghis's grandson rules China from Dadu, today's Beijing.</p></div></li>
+    <li class="link"><span class="y">1274·81</span><span class="dot"></span><div><h3>The Mongol invasions of Japan<span class="jtag">JAPAN</span></h3><p>Yuan forces attack Kyushu twice. This is the first major contact between Japan and Mongolia.</p></div></li>
+    <li><span class="y">1368</span><span class="dot"></span><div><h3>The Yuan retreat from China to the steppe</h3><p>Mongolia then splits into rival groups.</p></div></li>
+    <li><span class="y">17th c.</span><span class="dot"></span><div><h3>Mongolia comes under Qing rule</h3><p>The Qing dynasty governs the region for about 200 years.</p></div></li>
+    <li><span class="y">1911</span><span class="dot"></span><div><h3>Independence from the Qing is declared</h3><p>As the Qing collapses, Mongolia declares independence under the Bogd Khan.</p></div></li>
+    <li><span class="y">1924</span><span class="dot"></span><div><h3>The Mongolian People's Republic is founded</h3><p>It becomes the world's second socialist state, after the Soviet Union.</p></div></li>
+    <li class="link"><span class="y">1939</span><span class="dot"></span><div><h3>Battles of Khalkhin Gol (Nomonhan)<span class="jtag">JAPAN</span></h3><p>Japanese and Manchukuo forces fight Soviet and Mongolian forces over the border.</p></div></li>
+    <li class="link"><span class="y">1972</span><span class="dot"></span><div><h3>Japan and Mongolia establish diplomatic relations<span class="jtag">JAPAN</span></h3><p>Economic cooperation and people-to-people exchange begin in earnest.</p></div></li>
+    <li><span class="y">1990</span><span class="dot"></span><div><h3>Democracy and a market economy</h3><p>A peaceful democratic movement brings multi-party politics.</p></div></li>
+    <li><span class="y">1992</span><span class="dot"></span><div><h3>A new constitution; the country becomes “Mongolia”</h3><p>Genghis Khan is honored once again as a national hero.</p></div></li>
+    <li class="link"><span class="y">1990s–</span><span class="dot"></span><div><h3>Mongolian wrestlers shine in Japanese sumo<span class="jtag">JAPAN</span></h3><p>The first Mongolian wrestlers joined in 1992. Several have since become yokozuna, linking the two countries.</p></div></li>
+  </ol>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <b>DIT ORIGINAL GUIDE</b>
+    <p>Area and population figures are approximate. Some historical dates and interpretations are debated.</p>
+  </div>
+</footer>
+<script>
+(function(){
+  var tabs=[document.getElementById('t-same'),document.getElementById('t-diff')];
+  var panes=[document.getElementById('p-same'),document.getElementById('p-diff')];
+  function sel(i){tabs.forEach(function(t,j){t.setAttribute('aria-selected',j===i?'true':'false');t.tabIndex=j===i?0:-1;panes[j].hidden=j!==i;});}
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){sel(i);});
+    t.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();var n=(i+1)%2;sel(n);tabs[n].focus();}});
+  });
+  sel(0);
+})();
+</script>
+
+</body>
+</html>

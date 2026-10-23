@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>html{color-scheme:light}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>モンゴル奇祭図鑑</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reggae+One&family=BIZ+UDPGothic:wght@400;700&family=IBM+Plex+Sans+Condensed:wght@600&display=swap">
+<style>
+/* Layout: 祭のポスターを並べた図鑑。12か月の暦で「いつ行けるか」を先に見せ、下でクレイジー度つきの祭カードを季節で絞り込む */
+:root{
+  --bg:#eef2f8;
+  --surface:#ffffff;
+  --ink:#151a24;
+  --muted:#586174;
+  --line:#d4dbe6;
+  --red:#d9432a;     /* ナーダムの朱 */
+  --saffron:#efaa17; /* 僧衣の黄 */
+  --teal:#0f625f;    /* 草原の夏 */
+  --ice:#3f7fc4;     /* 凍った湖 */
+  --on-color:#ffffff;
+  --f-display:"Reggae One","Hiragino Sans","Yu Gothic",sans-serif;
+  --f-body:"BIZ UDPGothic","Hiragino Sans","Yu Gothic",sans-serif;
+  --f-label:"IBM Plex Sans Condensed","Arial Narrow",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f131b;--surface:#171d28;--ink:#e8ecf3;--muted:#a1aabb;--line:#2a3343;
+  --red:#ea6a4f;--saffron:#f2bb45;--teal:#3fa39e;--ice:#74a7e0;--on-color:#0f131b;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f131b;--surface:#171d28;--ink:#e8ecf3;--muted:#a1aabb;--line:#2a3343;
+  --red:#ea6a4f;--saffron:#f2bb45;--teal:#3fa39e;--ice:#74a7e0;--on-color:#0f131b;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.8}
+.wrap{max-width:1100px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;line-height:1.3;margin:0;text-wrap:balance}
+p{margin:0}
+.lbl{font-family:var(--f-label);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.cyr{font-family:var(--f-label);letter-spacing:.04em}
+
+/* hero */
+.hero .wrap{padding-block:52px 28px;display:grid;gap:18px}
+.hero h1{font-size:clamp(2.2rem,7.5vw,4.8rem)}
+.hero h1 em{font-style:normal;color:var(--red)}
+.hero .lead{max-width:36em;font-size:1.05rem;color:var(--muted)}
+.series{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.chip{font-family:var(--f-label);font-size:.78rem;letter-spacing:.1em;border:1.5px solid var(--ink);border-radius:999px;padding:2px 12px}
+
+/* calendar */
+.cal-sec{padding-block:8px 36px}
+.cal-wrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px}
+.cal{display:grid;grid-template-columns:120px repeat(12,minmax(40px,1fr));min-width:680px;row-gap:6px;font-size:.82rem}
+.cal .m{font-family:var(--f-label);text-align:center;color:var(--muted);padding-bottom:6px;border-bottom:1px solid var(--line)}
+.cal .name{padding-right:10px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;align-self:center}
+.cal .bar{height:22px;border-radius:6px;align-self:center}
+.cal .bar.summer{background:var(--teal)}
+.cal .bar.winter{background:var(--ice)}
+.cal .bar.autumn{background:var(--red)}
+.cal .bar.spring{background:var(--saffron)}
+.cal-note{margin-top:10px;font-size:.82rem;color:var(--muted)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:.82rem;color:var(--muted);margin-top:10px}
+.legend span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px;background:var(--c)}
+
+/* filter */
+.bar-top{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+.bar-top h2{font-size:clamp(1.5rem,4vw,2.2rem)}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.fbtn{font:inherit;font-weight:700;font-size:.9rem;padding:8px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;min-height:40px}
+.fbtn[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.fbtn:focus-visible{outline:3px solid var(--saffron);outline-offset:2px}
+
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;padding-bottom:56px}
+.fest{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:grid;grid-template-rows:auto 1fr;min-width:0}
+.poster{position:relative;padding:20px 20px 18px;color:var(--on-color);display:grid;grid-template-columns:1fr auto;gap:10px;align-items:end;min-height:150px}
+.poster.summer{background:var(--teal)}.poster.winter{background:var(--ice)}.poster.autumn{background:var(--red)}.poster.spring{background:var(--saffron);color:#1a1405}
+.poster h3{font-size:1.55rem}
+.poster .cyr{font-size:.85rem;opacity:.85;display:block;margin-top:2px}
+.poster .when{font-family:var(--f-label);font-size:.8rem;letter-spacing:.08em;opacity:.95;grid-column:1/-1;order:-1}
+.poster svg{width:72px;height:72px;fill:none;stroke:currentColor;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;opacity:.9}
+.body{padding:18px 20px 22px;display:grid;gap:12px;align-content:start}
+.meter{display:flex;gap:10px;align-items:center}
+.dots{display:flex;gap:4px}
+.dots i{width:16px;height:16px;border-radius:50%;background:var(--line);display:block}
+.dots i.on{background:var(--red)}
+.meter b{font-family:var(--f-display);font-weight:400;font-size:.95rem}
+.where{font-size:.85rem;color:var(--muted)}
+.crazy{font-weight:700;font-size:1rem;line-height:1.6}
+.body p.desc{font-size:.93rem;color:var(--muted)}
+.tip{font-size:.86rem;border-top:1px dashed var(--line);padding-top:10px}
+.tip::before{content:"知っておくと得";font-family:var(--f-label);font-size:.7rem;letter-spacing:.1em;color:var(--teal);display:block}
+
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:26px;font-size:.84rem;color:var(--muted);display:grid;gap:6px}
+footer b{font-family:var(--f-display);font-weight:400;color:var(--ink)}
+@media (max-width:420px){.cards{grid-template-columns:minmax(0,1fr)}}
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="series"><span class="chip">DIT ORIGINAL</span><span class="lbl">MONGOLIA FESTIVAL FIELD GUIDE</span></div>
+    <h1>モンゴルの祭は、<br><em>だいたいクレイジー。</em></h1>
+    <p class="lead">マイナス30℃の湖の上で綱を引き、ヤクにまたがってロデオをし、イヌワシを馬上の腕に呼び戻す。遊牧の暮らしがそのまま競技になった、モンゴルの祭を集めました。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="cal-sec" aria-labelledby="cal-h">
+    <div class="bar-top"><h2 id="cal-h">いつ行ける?祭カレンダー</h2></div>
+    <div class="cal-wrap">
+      <div class="cal" id="cal" role="table" aria-label="祭の開催月"></div>
+      <div class="legend">
+        <span style="--c:var(--ice)">冬</span><span style="--c:var(--saffron)">春</span><span style="--c:var(--teal)">夏</span><span style="--c:var(--red)">秋</span>
+      </div>
+      <p class="cal-note">開催日は年や地域によって変わります。旧正月は太陰暦なので毎年ずれます。行く前に最新の日程を確認してください。</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="list-h">
+    <div class="bar-top">
+      <h2 id="list-h">クレイジー度つき 祭図鑑</h2>
+      <div class="filters" role="group" aria-label="季節で絞り込む">
+        <button class="fbtn" type="button" data-f="all" aria-pressed="true">すべて</button>
+        <button class="fbtn" type="button" data-f="winter" aria-pressed="false">冬</button>
+        <button class="fbtn" type="button" data-f="summer" aria-pressed="false">夏</button>
+        <button class="fbtn" type="button" data-f="autumn" aria-pressed="false">秋</button>
+        <button class="fbtn" type="button" data-f="sort" aria-pressed="false">クレイジー順</button>
+      </div>
+    </div>
+    <div class="cards" id="cards"></div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <b>DIT ORIGINAL GUIDE</b>
+    <p>開催時期や内容は年によって変わることがあります。地方の祭はツアーで参加するのが一般的です。</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var ICON={
+    horse:'<path d="M14 54 L22 34 Q24 22 36 20 L44 12 L46 20 Q56 22 58 32 L54 34 L50 28 L44 32 L44 54 M28 40 L26 54"/>',
+    camel:'<path d="M10 54 L14 36 Q20 26 26 34 Q32 22 38 34 L48 34 L52 22 Q56 16 60 22 L58 28 L54 30 L50 54 M22 40 L20 54 M42 38 L42 54"/>',
+    ice:'<path d="M36 10 V62 M14 23 L58 49 M58 23 L14 49 M30 14 L36 20 L42 14 M30 58 L36 52 L42 58"/>',
+    yak:'<path d="M12 22 Q16 34 26 30 M60 22 Q56 34 46 30 M26 30 Q36 24 46 30 L48 44 Q36 56 24 44 Z M30 40 H42 M22 44 Q14 56 18 62 M50 44 Q58 56 54 62"/>',
+    eagle:'<path d="M8 30 Q22 18 36 30 Q50 18 64 30 Q52 32 46 40 L40 38 L36 50 L32 38 L26 40 Q20 32 8 30 Z M36 30 L36 22 L40 18"/>',
+    deer:'<path d="M26 30 L20 16 M20 22 L12 18 M20 16 L24 8 M46 30 L52 16 M52 22 L60 18 M52 16 L48 8 M26 30 Q36 26 46 30 L44 44 Q36 52 28 44 Z M32 52 V62 M40 52 V62"/>',
+    mask:'<path d="M16 22 Q36 4 56 22 Q60 44 36 62 Q12 44 16 22 Z M26 32 L32 34 M46 32 L40 34 M28 46 Q36 52 44 46 M24 12 L18 6 M48 12 L54 6 M36 8 V2"/>',
+    buuz:'<path d="M12 46 Q12 26 36 24 Q60 26 60 46 Z M36 24 Q34 18 36 14 Q38 18 36 24 M24 30 Q28 36 26 44 M48 30 Q44 36 46 44 M36 26 V44 M8 50 H64"/>'
+  };
+  var F=[
+    {id:'naadam',ja:'ナーダム',mn:'Наадам',season:'summer',months:[7],when:'7月11〜13日',where:'ウランバートルほか全国',icon:'horse',c:3,
+      crazy:'子どもの騎手が、草原を最長30km近く全力で駆け抜ける競馬。',
+      desc:'相撲・競馬・弓射の「男の三種競技」が行われる国最大の祭。力士は胸の開いた衣装で戦い、勝つと鷲の舞を舞います。',
+      tip:'会場の屋台で食べる揚げ肉まん「ホーショール」がナーダムの味。'},
+    {id:'camel',ja:'千頭のラクダ祭',mn:'Мянган тэмээний баяр',season:'winter',months:[2,3],when:'冬(2〜3月ごろ)',where:'南部ゴビ',icon:'camel',c:4,
+      crazy:'フタコブラクダが本気で走るレースと、ラクダに乗ったままのポロ。',
+      desc:'ゴビのフタコブラクダを守るために始まった祭。ラクダの美しさを競うコンテストや、遊牧民の衣装パレードもあります。',
+      tip:'ラクダは見た目よりずっと速い。コース際に立つときは要注意。'},
+    {id:'ice',ja:'フブスグル湖 氷の祭',mn:'Хөвсгөлийн мөсний баяр',season:'winter',months:[2,3],when:'冬(2〜3月ごろ)',where:'北部 フブスグル湖',icon:'ice',c:4,
+      crazy:'厚さ1m以上に凍った湖の上で、綱引き、馬そりレース、氷の彫刻づくり。',
+      desc:'「青い真珠」と呼ばれる透明度の高い湖が、冬は巨大な会場になります。足元の氷を通して、湖の青が見えることも。',
+      tip:'体感はマイナス20〜30℃。靴の中に貼るカイロがあると天国。'},
+    {id:'yak',ja:'ヤク祭',mn:'Сарлагийн баяр',season:'summer',months:[8],when:'夏(8月ごろ)',where:'中部 アルハンガイ周辺',icon:'yak',c:5,
+      crazy:'毛むくじゃらのヤクにまたがるロデオと、ヤクの全力レース。',
+      desc:'高原に住むヤク飼いの祭。ヤクの乳しぼり競争やヤクポロもあり、ヤクの乳から作るチーズや乳製品も味わえます。',
+      tip:'ヤクは気まぐれ。レースでも観客席に向かって走ってくることがある。'},
+    {id:'eagle',ja:'イヌワシ祭',mn:'Бүргэдийн баяр',season:'autumn',months:[10],when:'秋(10月上旬)',where:'西部 バヤン・ウルギー',icon:'eagle',c:5,
+      crazy:'山の上から放ったイヌワシが、疾走する馬上の主人の腕に一直線に戻ってくる。',
+      desc:'西部に住むカザフ系の鷹匠たちが腕を競う祭。ヤギの皮を馬上で奪い合う「コクパル」など、迫力ある馬の競技も行われます。',
+      tip:'鷹匠の民族衣装やキツネの毛皮の帽子にも注目。写真を撮るなら一声かけて。'},
+    {id:'deer',ja:'トナカイ祭',mn:'Цаа бугын баяр',season:'winter',months:[2],when:'冬(2月ごろ)',where:'北部 フブスグル県',icon:'deer',c:4,
+      crazy:'雪原でトナカイにまたがってレース。トナカイに乗る民族は世界でも珍しい。',
+      desc:'タイガの森でトナカイと暮らす少数民族ツァータンの文化を伝える祭。トナカイのそり引きや、伝統の歌も披露されます。',
+      tip:'ツァータンの人々の暮らしは観光と環境保護の両立が課題。マナーを守って参加を。'},
+    {id:'tsam',ja:'ツァム(仮面舞踊)',mn:'Цам',season:'summer',months:[8],when:'夏(8月ごろ)ほか',where:'ウランバートル近郊の寺院など',icon:'mask',c:3,
+      crazy:'巨大な仮面をかぶった僧侶たちが、神や骸骨、動物になって舞い、悪霊を払う。',
+      desc:'チベット仏教の儀式舞踊。社会主義時代に禁じられ、1990年代以降に復活しました。夏のダンシグ・ナーダムなどで見られます。',
+      tip:'寺院の中は時計回りに。舞台の前を横切らないようにしよう。'},
+    {id:'tsagaan',ja:'旧正月 ツァガーン・サル',mn:'Цагаан сар',season:'winter',months:[1,2],when:'冬(1〜2月ごろ)',where:'全国の家庭',icon:'buuz',c:3,
+      crazy:'家族総出で、蒸し餃子ボーズを何百個、家によっては千個以上つくる。',
+      desc:'モンゴル人にとって一年でいちばん大切な祝日。親戚の家を一日に何軒もまわり、どこでもボーズとお茶でもてなされます。',
+      tip:'訪問先ごとにボーズが出るので、一軒目で食べすぎないのがコツ。'}
+  ];
+  var SN={summer:'夏',winter:'冬',autumn:'秋',spring:'春'};
+
+  // calendar
+  var cal=document.getElementById('cal'),h='<div></div>';
+  for(var m=1;m<=12;m++)h+='<div class="m">'+m+'月</div>';
+  F.forEach(function(f){
+    h+='<div class="name" role="rowheader">'+f.ja+'</div>';
+    for(var m=1;m<=12;m++){h+=f.months.indexOf(m)>-1?'<div class="bar '+f.season+'" title="'+f.ja+' '+m+'月"></div>':'<div></div>';}
+  });
+  cal.innerHTML=h;
+
+  // cards
+  var wrap=document.getElementById('cards');
+  function card(f){
+    var dots='';for(var i=1;i<=5;i++)dots+='<i class="'+(i<=f.c?'on':'')+'"></i>';
+    return '<article class="fest" data-season="'+f.season+'" data-c="'+f.c+'">'+
+      '<div class="poster '+f.season+'"><span class="when">'+f.when+'</span><div><h3>'+f.ja+'</h3><span class="cyr">'+f.mn+'</span></div>'+
+      '<svg viewBox="0 0 72 72" aria-hidden="true">'+ICON[f.icon]+'</svg></div>'+
+      '<div class="body"><div class="meter"><span class="dots" aria-hidden="true">'+dots+'</span><b>クレイジー度 '+f.c+'</b></div>'+
+      '<p class="where">'+f.where+'</p><p class="crazy">'+f.crazy+'</p><p class="desc">'+f.desc+'</p><p class="tip">'+f.tip+'</p></div></article>';
+  }
+  function render(list){wrap.innerHTML=list.map(card).join('');}
+  render(F);
+
+  var btns=document.querySelectorAll('.fbtn');
+  btns.forEach(function(b){
+    b.addEventListener('click',function(){
+      btns.forEach(function(x){x.setAttribute('aria-pressed','false');});
+      b.setAttribute('aria-pressed','true');
+      var k=b.getAttribute('data-f');
+      if(k==='all')render(F);
+      else if(k==='sort')render(F.slice().sort(function(a,b){return b.c-a.c;}));
+      else render(F.filter(function(f){return f.season===k;}));
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

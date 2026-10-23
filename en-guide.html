@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>html{color-scheme:light}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Unlisted Mongolia</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=M+PLUS+1p:wght@400;500;700&family=Yomogi&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: field notes on grid paper; redacted "real talk" revealed by tapping */
+:root{
+  --paper:#f3f1ea;
+  --grid:#dcdfe0;
+  --surface:#fbfaf6;
+  --ink:#1d2129;
+  --muted:#5b6170;
+  --redact:#15171c;
+  --marker:#ffe36b;
+  --stamp:#c7362b;
+  --sky:#2459a6;
+  --line:#cfd2d6;
+  --f-display:"Dela Gothic One","Hiragino Sans","Yu Gothic",sans-serif;
+  --f-body:"M PLUS 1p","Hiragino Sans","Yu Gothic",sans-serif;
+  --f-hand:"Yomogi","Hiragino Maru Gothic ProN",cursive;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#15181e;--grid:#222731;--surface:#1b1f27;--ink:#e7e9ee;--muted:#a0a7b5;
+  --redact:#000000;--marker:#6b5a12;--stamp:#ef6a5c;--sky:#7ea8ea;--line:#2e3440;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#15181e;--grid:#222731;--surface:#1b1f27;--ink:#e7e9ee;--muted:#a0a7b5;
+  --redact:#000000;--marker:#6b5a12;--stamp:#ef6a5c;--sky:#7ea8ea;--line:#2e3440;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.85;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:24px 24px}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2{font-family:var(--f-display);font-weight:400;line-height:1.3;text-wrap:balance;margin:0}
+h3{font-size:1.06rem;font-weight:700;margin:0;line-height:1.5}
+p{margin:0}
+.hand{font-family:var(--f-hand)}
+.mono{font-family:var(--f-mono);font-size:.82em}
+mark{background:linear-gradient(transparent 55%,var(--marker) 55%);color:inherit;padding:0 .1em}
+
+/* hero */
+.hero .wrap{padding-block:56px 40px;display:grid;gap:22px}
+.stampline{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.stamp{font-family:var(--f-display);color:var(--stamp);border:3px solid var(--stamp);padding:4px 12px;border-radius:6px;transform:rotate(-4deg);display:inline-block;font-size:.95rem;letter-spacing:.08em}
+.badge{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.12em;color:var(--muted)}
+.hero h1{font-size:clamp(2.6rem,9vw,5.6rem);letter-spacing:-.01em}
+.hero h1 .x{position:relative;display:inline-block}
+.hero h1 .x::after{content:"";position:absolute;left:-2%;right:-2%;top:52%;height:.16em;background:var(--stamp);transform:rotate(-3deg)}
+.hero .lead{max-width:34em;font-size:1.05rem}
+.hero .note{font-family:var(--f-hand);color:var(--sky);font-size:1.1rem;transform:rotate(-1.5deg);max-width:28em}
+.controls{display:flex;gap:10px;flex-wrap:wrap}
+.btn{font:inherit;font-weight:700;font-size:.92rem;border:2px solid var(--ink);background:var(--surface);color:var(--ink);padding:8px 16px;border-radius:999px;cursor:pointer}
+.btn:hover{background:var(--marker)}
+.btn:focus-visible,.redact:focus-visible,.toc a:focus-visible{outline:3px solid var(--sky);outline-offset:2px}
+
+/* toc */
+.toc{display:flex;gap:8px;flex-wrap:wrap;list-style:none;padding:0;margin:0}
+.toc a{display:inline-block;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);padding:6px 14px;border-radius:6px;font-size:.9rem}
+.toc a:hover{border-color:var(--ink)}
+
+/* redaction */
+.redact{background:var(--redact);color:transparent;border-radius:2px;cursor:pointer;padding:0 .15em;transition:background .25s,color .25s;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.redact.open{background:var(--marker);color:var(--ink)}
+@media (prefers-reduced-motion:reduce){.redact{transition:none}}
+
+/* chapters */
+section.ch{padding-block:48px}
+.ch-head{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;align-items:end;margin-bottom:26px;border-bottom:2px solid var(--ink);padding-bottom:12px}
+.ch-head .no{font-family:var(--f-display);font-size:3rem;line-height:1;color:var(--stamp);grid-row:span 2}
+.ch-head h2{font-size:clamp(1.5rem,4vw,2.2rem)}
+.ch-head p{color:var(--muted);font-size:.92rem}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:20px 20px 22px;display:grid;gap:10px;align-content:start;min-width:0}
+.card .kicker{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.1em;color:var(--sky)}
+.card p{font-size:.95rem}
+.card .scribble{font-family:var(--f-hand);color:var(--stamp);font-size:1rem;line-height:1.6}
+.card.wide{grid-column:1/-1}
+
+/* fail list */
+.fails{display:grid;gap:0;background:var(--surface);border:1px solid var(--line);border-radius:4px}
+.fail{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;padding:20px;border-top:1px dashed var(--line)}
+.fail:first-child{border-top:0}
+.fail .what h3::before{content:"OOPS";font-family:var(--f-mono);font-size:.7rem;letter-spacing:.1em;color:var(--stamp);display:block;margin-bottom:2px}
+.fail .fix{border-left:3px solid var(--marker);padding-left:14px}
+.fail .fix strong{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.1em;color:var(--sky);display:block;font-weight:500}
+.fail p{font-size:.94rem}
+
+/* winter scale */
+.thermo{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:20px;display:grid;gap:12px}
+.scale{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.step{border-top:6px solid var(--sky);padding-top:8px;font-size:.85rem;min-width:0}
+.step b{font-family:var(--f-mono);display:block;font-size:.95rem;font-variant-numeric:tabular-nums}
+.step:nth-child(1){border-color:#7fb2e0}.step:nth-child(2){border-color:#5a92d1}.step:nth-child(3){border-color:#3a72bf}.step:nth-child(4){border-color:#2453a0}.step:nth-child(5){border-color:#152f6b}
+
+/* phrases */
+.phr{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:4px}
+table{border-collapse:collapse;width:100%;min-width:520px}
+th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top;font-size:.94rem}
+th{font-family:var(--f-mono);font-weight:500;font-size:.74rem;letter-spacing:.1em;color:var(--muted)}
+td.mn{font-family:var(--f-mono);font-size:1rem;white-space:nowrap}
+td.real{font-family:var(--f-hand);color:var(--stamp)}
+tr:last-child td{border-bottom:0}
+
+/* stories */
+.stories{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.story{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:20px;display:grid;gap:10px;align-content:start;position:relative;min-width:0}
+.story .who{display:flex;gap:10px;align-items:center}
+.avatar{width:40px;height:40px;border-radius:50%;background:var(--marker);display:grid;place-items:center;font-family:var(--f-display);flex:none}
+.story .who small{color:var(--muted);display:block;line-height:1.3}
+.story q{font-family:var(--f-hand);font-size:1.08rem;line-height:1.7;quotes:"“" "”"}
+.sample{position:absolute;top:12px;right:12px;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.1em;color:var(--stamp);border:1px solid var(--stamp);padding:0 6px;border-radius:3px}
+.story.empty{border-style:dashed;background:transparent;place-content:center;text-align:center;color:var(--muted);min-height:200px}
+.story.empty b{font-family:var(--f-display);font-weight:400;color:var(--ink);font-size:1.15rem}
+
+footer{border-top:2px solid var(--ink);margin-top:24px}
+footer .wrap{padding-block:28px;display:grid;gap:6px;font-size:.85rem;color:var(--muted)}
+footer .brand{font-family:var(--f-display);color:var(--ink);font-size:1.1rem}
+
+@media (max-width:820px){
+  .cards,.stories{grid-template-columns:minmax(0,1fr)}
+  .fail{grid-template-columns:minmax(0,1fr);gap:10px}
+  .scale{grid-template-columns:repeat(5,minmax(56px,1fr));overflow-x:auto}
+}
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="stampline"><span class="stamp">DIT ORIGINAL</span><span class="badge">FIELD NOTES · ULAANBAATAR & STEPPE</span></div>
+    <h1>The Mongolia<br>no guidebook tells you</h1>
+    <p class="lead">The things guidebooks don't say, or can't. Everyday tricks locals use, mistakes travelers keep making, what life there is really like, and stories from DIT members.</p>
+    <p class="note">* Tap the blacked-out parts to reveal them. That's where the good stuff is.</p>
+    <div class="controls">
+      <button class="btn" type="button" id="open-all">Reveal everything</button>
+      <button class="btn" type="button" id="close-all">Black it out again</button>
+    </div>
+    <ul class="toc">
+      <li><a href="#honne">01 Local tricks</a></li>
+      <li><a href="#fails">02 Classic mistakes</a></li>
+      <li><a href="#life">03 Real life</a></li>
+      <li><a href="#words">04 Words people actually use</a></li>
+      <li><a href="#stories">05 DIT stories</a></li>
+    </ul>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="ch" id="honne">
+  <div class="ch-head"><span class="no">01</span><h2>What locals really do</h2><p>Everyday tricks Mongolians take for granted</p></div>
+  <div class="cards">
+    <article class="card">
+      <span class="kicker">TAXI · GETTING AROUND</span>
+      <h3>Hold out your hand and an ordinary car stops</h3>
+      <p>In Ulaanbaatar, if you stand at the roadside with your arm out low, a private car, not a taxi, may stop and offer you a ride. <span class="redact" tabindex="0" role="button" aria-label="Blacked out. Tap to reveal">For locals this is completely normal. Always agree on the destination and price before you get in.</span></p>
+      <p class="scribble">Visitors are safer with a ride-hailing app.</p>
+    </article>
+    <article class="card">
+      <span class="kicker">TRAFFIC · JAMS</span>
+      <h3>At rush hour, walking is faster</h3>
+      <p>Traffic in the capital is among the worst anywhere. <span class="redact" tabindex="0" role="button" aria-label="Blacked out. Tap to reveal">Locals know that for a few kilometers, walking wins. “Traffic” is an excuse everyone accepts for being late.</span></p>
+      <p class="scribble">Leave extra time, and extra patience.</p>
+    </article>
+    <article class="card">
+      <span class="kicker">MONEY · PAYING</span>
+      <h3>QR codes in the city, cash in the countryside</h3>
+      <p>Cards and QR payments work almost everywhere in Ulaanbaatar. <span class="redact" tabindex="0" role="button" aria-label="Blacked out. Tap to reveal">Out on the steppe there is often no signal and no ATM. Carry plenty of small notes.</span></p>
+    </article>
+    <article class="card">
+      <span class="kicker">SHOPPING · BARGAINING</span>
+      <h3>Haggle at markets, and only at markets</h3>
+      <p>At open-air markets like Narantuul, bargaining is expected. <span class="redact" tabindex="0" role="button" aria-label="Blacked out. Tap to reveal">Never haggle in department stores or chains. For cashmere, factory outlet stores beat tourist souvenir shops on both quality and price.</span></p>
+    </article>
+    <article class="card">
+      <span class="kicker">FOOD · EATING OUT</span>
+      <h3>The best places have the smallest signs</h3>
+      <p>Locals eat at simple canteens called <i>guanz</i>. <span class="redact" tabindex="0" role="button" aria-label="Blacked out. Tap to reveal">The lunch set (<span class="mono">Ланч</span>) is cheap and huge. For real buuz and khuushuur, skip the tourist restaurants and come here.</span></p>
+    </article>
+    <article class="card">
+      <span class="kicker">STEPPE · VISITING HERDERS</span>
+      <h3>Bring sweets as a gift</h3>
+      <p>On the steppe, even a stranger passing by is welcomed with tea. <span class="redact" tabindex="0" role="button" aria-label="Blacked out. Tap to reveal">The best thank-you gifts are things only sold in town: candy, cookies, fruit. Families with children love them most.</span></p>
+    </article>
+  </div>
+</section>
+
+<section class="ch" id="fails">
+  <div class="ch-head"><span class="no">02</span><h2>Classic traveler mistakes</h2><p>What went wrong, and what to do instead</p></div>
+  <div class="fails">
+    <div class="fail">
+      <div class="what"><h3>My phone was stolen at the market</h3><p>Crowded markets and packed buses are pickpocket hotspots.</p></div>
+      <div class="fix"><strong>DO THIS INSTEAD</strong><p>Keep your phone and wallet in a front pocket or a bag in front of you. <span class="redact" tabindex="0" role="button" aria-label="Blacked out. Tap to reveal">Wear your backpack on your chest. Locals do the same.</span></p></div>
+    </div>
+    <div class="fail">
+      <div class="what"><h3>Too much airag, and an upset stomach</h3><p>Airag (<span class="mono">айраг</span>), fermented mare's milk, is the taste of summer, and hosts keep offering it.</p></div>
+      <div class="fix"><strong>DO THIS INSTEAD</strong><p>Go slowly the first time. <span class="redact" tabindex="0" role="button" aria-label="Blacked out. Tap to reveal">Even Mongolians who aren't used to it get stomach trouble. Saying “just a little” is perfectly fine.</span></p></div>
+    </div>
+    <div class="fail">
+      <div class="what"><h3>I asked where the toilet was, and they pointed at the steppe</h3><p>In the countryside a toilet may be a pit with walls, or there may be none at all.</p></div>
+      <div class="fix"><strong>DO THIS INSTEAD</strong><p>Always carry toilet paper and wet wipes. <span class="redact" tabindex="0" role="button" aria-label="Blacked out. Tap to reveal">Herders say “I'm going to check on the horses” when they mean the toilet.</span></p></div>
+    </div>
+    <div class="fail">
+      <div class="what"><h3>I went in October in summer clothes and froze</h3><p>The steppe swings hard between day and night. Even in autumn, mornings drop below zero.</p></div>
+      <div class="fix"><strong>DO THIS INSTEAD</strong><p>Pack a light down jacket and a hat in any season. <span class="redact" tabindex="0" role="button" aria-label="Blacked out. Tap to reveal">Mongolians themselves say you get four seasons in one day. It can even snow in summer.</span></p></div>
+    </div>
+    <div class="fail">
+      <div class="what"><h3>The bumpy roads made me too sick to enjoy the view</h3><p>Outside the city most roads are unpaved, and drives last hours.</p></div>
+      <div class="fix"><strong>DO THIS INSTEAD</strong><p>Bring motion-sickness pills. <span class="redact" tabindex="0" role="button" aria-label="Blacked out. Tap to reveal">Locals jokingly call the shaking a “Mongolian massage”.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="ch" id="life">
+  <div class="ch-head"><span class="no">03</span><h2>Real life in Mongolia</h2><p>What you only learn by living there</p></div>
+  <div class="cards">
+    <article class="card wide">
+      <span class="kicker">WINTER · THE COLDEST CAPITAL</span>
+      <h3>How Ulaanbaatar's winter feels</h3>
+      <div class="thermo">
+        <div class="scale">
+          <div class="step"><b>0°C</b>Still autumn. One jacket</div>
+          <div class="step"><b>−10°C</b>No gloves? Painful</div>
+          <div class="step"><b>−20°C</b>Eyelashes start to freeze</div>
+          <div class="step"><b>−30°C</b>Phone battery suddenly dies</div>
+          <div class="step"><b>−40°C</b>January mornings get this cold</div>
+        </div>
+        <p>On some winter days, smoke from heating makes the air bad. <span class="redact" tabindex="0" role="button" aria-label="Blacked out. Tap to reveal">Locals wear masks. Keep your phone in an inside pocket so your body heat keeps it alive.</span></p>
+      </div>
+    </article>
+    <article class="card">
+      <span class="kicker">FAMILY</span>
+      <h3>Cousins are basically siblings</h3>
+      <p>Family ties are very close, and cousins are often called brothers and sisters. <span class="redact" tabindex="0" role="button" aria-label="Blacked out. Tap to reveal">People seriously say that everyone in the country is connected through someone. That's life in a nation of about 3.5 million.</span></p>
+    </article>
+    <article class="card">
+      <span class="kicker">TIME</span>
+      <h3>Plans are “roughly”</h3>
+      <p>Weather, roads and livestock can change any plan, and everyone accepts that. <span class="redact" tabindex="0" role="button" aria-label="Blacked out. Tap to reveal">“I'll come tomorrow” can mean three days later. Waiting calmly is the steppe way.</span></p>
+    </article>
+    <article class="card">
+      <span class="kicker">YOUTH CULTURE</span>
+      <h3>Korean convenience stores, Mongolian rap</h3>
+      <p>Korean-style convenience stores are on every corner in Ulaanbaatar, and young people love K-pop and Mongolian hip-hop. <span class="redact" tabindex="0" role="button" aria-label="Blacked out. Tap to reveal">Some bands mix throat singing and the horsehead fiddle with rap. The steppe and the city live side by side.</span></p>
+    </article>
+    <article class="card">
+      <span class="kicker">FOOD</span>
+      <h3>Meat is the star. Vegetables are extras</h3>
+      <p>Traditional meals center on mutton and dairy. <span class="redact" tabindex="0" role="button" aria-label="Blacked out. Tap to reveal">Vegetarians struggle in the countryside. The capital has more and more vegetarian restaurants, so eat well there first.</span></p>
+    </article>
+  </div>
+</section>
+
+<section class="ch" id="words">
+  <div class="ch-head"><span class="no">04</span><h2>Words people actually use</h2><p>The textbook meaning, and the real one</p></div>
+  <div class="phr">
+    <table>
+      <thead><tr><th>Mongolian</th><th>Say it</th><th>Textbook meaning</th><th>In real life</th></tr></thead>
+      <tbody>
+        <tr><td class="mn">Сайн байна уу?</td><td>sain baina uu</td><td>Hello</td><td class="real">The polite greeting. Friends just say “sainuu”</td></tr>
+        <tr><td class="mn">Зүгээр</td><td>zugeer</td><td>It's fine</td><td class="real">The all-purpose word: OK, sure, don't worry, all of it</td></tr>
+        <tr><td class="mn">Баярлалаа</td><td>bayarlalaa</td><td>Thank you</td><td class="real">Say it and watch faces light up</td></tr>
+        <tr><td class="mn">Хэд вэ?</td><td>khed ve</td><td>How much?</td><td class="real">Your first words at any market</td></tr>
+        <tr><td class="mn">Амттай!</td><td>amttai</td><td>Delicious</td><td class="real">Say it at a host's table and seconds will arrive</td></tr>
+        <tr><td class="mn">За</td><td>za</td><td>Yes / well then</td><td class="real">The universal “uh-huh”. Za to everything</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="ch" id="stories">
+  <div class="ch-head"><span class="no">05</span><h2>Stories from DIT members</h2><p>From people who visited or lived there</p></div>
+  <div class="stories">
+    <article class="story">
+      <span class="sample">SAMPLE</span>
+      <div class="who"><span class="avatar">A</span><div><b>Member A</b><small>Example story</small></div></div>
+      <q>My first night in a ger, there were so many stars I couldn't tell which one was the Milky Way. In the morning, goats woke me up.</q>
+    </article>
+    <article class="story">
+      <span class="sample">SAMPLE</span>
+      <div class="who"><span class="avatar">B</span><div><b>Member B</b><small>Example story</small></div></div>
+      <q>The herder's mother told me “eat more” five times. I thought I had said no, and then a third cup of tea appeared.</q>
+    </article>
+    <div class="story empty">
+      <b>Share your story</b>
+      <p>Send your name (a nickname is fine), when you went, and what happened. We'll add it to this page.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="brand">DIT ORIGINAL GUIDE</span>
+    <p>This guide is based on the experiences of locals and travelers. Things vary by region, season and person. Check your government's travel advice for the latest safety information.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var rs=document.querySelectorAll('.redact');
+  function set(el,open){el.classList.toggle('open',open);el.setAttribute('aria-label',open?'Revealed. Tap to black out again':'Blacked out. Tap to reveal');}
+  rs.forEach(function(el){
+    el.addEventListener('click',function(){set(el,!el.classList.contains('open'));});
+    el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();set(el,!el.classList.contains('open'));}});
+  });
+  document.getElementById('open-all').addEventListener('click',function(){rs.forEach(function(el){set(el,true);});});
+  document.getElementById('close-all').addEventListener('click',function(){rs.forEach(function(el){set(el,false);});});
+})();
+</script>
+
+</body>
+</html>

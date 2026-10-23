@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>html{color-scheme:light}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>載ってないモンゴル</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=M+PLUS+1p:wght@400;500;700&family=Yomogi&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: 現地で書き込んだフィールドノート。方眼紙の上に、黒塗りの「本音」をタップでめくる記事が並ぶ */
+:root{
+  --paper:#f3f1ea;
+  --grid:#dcdfe0;
+  --surface:#fbfaf6;
+  --ink:#1d2129;
+  --muted:#5b6170;
+  --redact:#15171c;
+  --marker:#ffe36b;
+  --stamp:#c7362b;
+  --sky:#2459a6;
+  --line:#cfd2d6;
+  --f-display:"Dela Gothic One","Hiragino Sans","Yu Gothic",sans-serif;
+  --f-body:"M PLUS 1p","Hiragino Sans","Yu Gothic",sans-serif;
+  --f-hand:"Yomogi","Hiragino Maru Gothic ProN",cursive;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#15181e;--grid:#222731;--surface:#1b1f27;--ink:#e7e9ee;--muted:#a0a7b5;
+  --redact:#000000;--marker:#6b5a12;--stamp:#ef6a5c;--sky:#7ea8ea;--line:#2e3440;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#15181e;--grid:#222731;--surface:#1b1f27;--ink:#e7e9ee;--muted:#a0a7b5;
+  --redact:#000000;--marker:#6b5a12;--stamp:#ef6a5c;--sky:#7ea8ea;--line:#2e3440;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.85;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:24px 24px}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2{font-family:var(--f-display);font-weight:400;line-height:1.3;text-wrap:balance;margin:0}
+h3{font-size:1.06rem;font-weight:700;margin:0;line-height:1.5}
+p{margin:0}
+.hand{font-family:var(--f-hand)}
+.mono{font-family:var(--f-mono);font-size:.82em}
+mark{background:linear-gradient(transparent 55%,var(--marker) 55%);color:inherit;padding:0 .1em}
+
+/* hero */
+.hero .wrap{padding-block:56px 40px;display:grid;gap:22px}
+.stampline{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.stamp{font-family:var(--f-display);color:var(--stamp);border:3px solid var(--stamp);padding:4px 12px;border-radius:6px;transform:rotate(-4deg);display:inline-block;font-size:.95rem;letter-spacing:.08em}
+.badge{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.12em;color:var(--muted)}
+.hero h1{font-size:clamp(2.6rem,9vw,5.6rem);letter-spacing:-.01em}
+.hero h1 .x{position:relative;display:inline-block}
+.hero h1 .x::after{content:"";position:absolute;left:-2%;right:-2%;top:52%;height:.16em;background:var(--stamp);transform:rotate(-3deg)}
+.hero .lead{max-width:34em;font-size:1.05rem}
+.hero .note{font-family:var(--f-hand);color:var(--sky);font-size:1.1rem;transform:rotate(-1.5deg);max-width:28em}
+.controls{display:flex;gap:10px;flex-wrap:wrap}
+.btn{font:inherit;font-weight:700;font-size:.92rem;border:2px solid var(--ink);background:var(--surface);color:var(--ink);padding:8px 16px;border-radius:999px;cursor:pointer}
+.btn:hover{background:var(--marker)}
+.btn:focus-visible,.redact:focus-visible,.toc a:focus-visible{outline:3px solid var(--sky);outline-offset:2px}
+
+/* toc */
+.toc{display:flex;gap:8px;flex-wrap:wrap;list-style:none;padding:0;margin:0}
+.toc a{display:inline-block;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);padding:6px 14px;border-radius:6px;font-size:.9rem}
+.toc a:hover{border-color:var(--ink)}
+
+/* redaction */
+.redact{background:var(--redact);color:transparent;border-radius:2px;cursor:pointer;padding:0 .15em;transition:background .25s,color .25s;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.redact.open{background:var(--marker);color:var(--ink)}
+@media (prefers-reduced-motion:reduce){.redact{transition:none}}
+
+/* chapters */
+section.ch{padding-block:48px}
+.ch-head{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;align-items:end;margin-bottom:26px;border-bottom:2px solid var(--ink);padding-bottom:12px}
+.ch-head .no{font-family:var(--f-display);font-size:3rem;line-height:1;color:var(--stamp);grid-row:span 2}
+.ch-head h2{font-size:clamp(1.5rem,4vw,2.2rem)}
+.ch-head p{color:var(--muted);font-size:.92rem}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:20px 20px 22px;display:grid;gap:10px;align-content:start;min-width:0}
+.card .kicker{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.1em;color:var(--sky)}
+.card p{font-size:.95rem}
+.card .scribble{font-family:var(--f-hand);color:var(--stamp);font-size:1rem;line-height:1.6}
+.card.wide{grid-column:1/-1}
+
+/* fail list */
+.fails{display:grid;gap:0;background:var(--surface);border:1px solid var(--line);border-radius:4px}
+.fail{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;padding:20px;border-top:1px dashed var(--line)}
+.fail:first-child{border-top:0}
+.fail .what h3::before{content:"やらかし";font-family:var(--f-mono);font-size:.7rem;letter-spacing:.1em;color:var(--stamp);display:block;margin-bottom:2px}
+.fail .fix{border-left:3px solid var(--marker);padding-left:14px}
+.fail .fix strong{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.1em;color:var(--sky);display:block;font-weight:500}
+.fail p{font-size:.94rem}
+
+/* winter scale */
+.thermo{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:20px;display:grid;gap:12px}
+.scale{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.step{border-top:6px solid var(--sky);padding-top:8px;font-size:.85rem;min-width:0}
+.step b{font-family:var(--f-mono);display:block;font-size:.95rem;font-variant-numeric:tabular-nums}
+.step:nth-child(1){border-color:#7fb2e0}.step:nth-child(2){border-color:#5a92d1}.step:nth-child(3){border-color:#3a72bf}.step:nth-child(4){border-color:#2453a0}.step:nth-child(5){border-color:#152f6b}
+
+/* phrases */
+.phr{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:4px}
+table{border-collapse:collapse;width:100%;min-width:520px}
+th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top;font-size:.94rem}
+th{font-family:var(--f-mono);font-weight:500;font-size:.74rem;letter-spacing:.1em;color:var(--muted)}
+td.mn{font-family:var(--f-mono);font-size:1rem;white-space:nowrap}
+td.real{font-family:var(--f-hand);color:var(--stamp)}
+tr:last-child td{border-bottom:0}
+
+/* stories */
+.stories{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.story{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:20px;display:grid;gap:10px;align-content:start;position:relative;min-width:0}
+.story .who{display:flex;gap:10px;align-items:center}
+.avatar{width:40px;height:40px;border-radius:50%;background:var(--marker);display:grid;place-items:center;font-family:var(--f-display);flex:none}
+.story .who small{color:var(--muted);display:block;line-height:1.3}
+.story q{font-family:var(--f-hand);font-size:1.08rem;line-height:1.7;quotes:"「" "」"}
+.sample{position:absolute;top:12px;right:12px;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.1em;color:var(--stamp);border:1px solid var(--stamp);padding:0 6px;border-radius:3px}
+.story.empty{border-style:dashed;background:transparent;place-content:center;text-align:center;color:var(--muted);min-height:200px}
+.story.empty b{font-family:var(--f-display);font-weight:400;color:var(--ink);font-size:1.15rem}
+
+footer{border-top:2px solid var(--ink);margin-top:24px}
+footer .wrap{padding-block:28px;display:grid;gap:6px;font-size:.85rem;color:var(--muted)}
+footer .brand{font-family:var(--f-display);color:var(--ink);font-size:1.1rem}
+
+@media (max-width:820px){
+  .cards,.stories{grid-template-columns:minmax(0,1fr)}
+  .fail{grid-template-columns:minmax(0,1fr);gap:10px}
+  .scale{grid-template-columns:repeat(5,minmax(56px,1fr));overflow-x:auto}
+}
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="stampline"><span class="stamp">DIT ORIGINAL</span><span class="badge">FIELD NOTES ・ ULAANBAATAR & STEPPE</span></div>
+    <h1>載ってない<br>モンゴル</h1>
+    <p class="lead">ガイドブックには書いていない、書けない、モンゴルの本音。現地の人が普段やっている裏ワザ、旅行者がよくやる失敗、暮らしてみて初めてわかること、そしてDITメンバーの体験談をまとめました。</p>
+    <p class="note">※ 黒塗りの部分はタップするとめくれます。ここからが本題。</p>
+    <div class="controls">
+      <button class="btn" type="button" id="open-all">黒塗りを全部めくる</button>
+      <button class="btn" type="button" id="close-all">元に戻す</button>
+    </div>
+    <ul class="toc">
+      <li><a href="#honne">01 本音と裏ワザ</a></li>
+      <li><a href="#fails">02 やらかし集</a></li>
+      <li><a href="#life">03 暮らしのリアル</a></li>
+      <li><a href="#words">04 本当に使うことば</a></li>
+      <li><a href="#stories">05 DITメンバーの話</a></li>
+    </ul>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="ch" id="honne">
+  <div class="ch-head"><span class="no">01</span><h2>現地の本音と裏ワザ</h2><p>地元の人が当たり前にやっていること</p></div>
+  <div class="cards">
+    <article class="card">
+      <span class="kicker">TAXI ・ 移動</span>
+      <h3>手を挙げると、普通の車が止まる</h3>
+      <p>ウランバートルでは、道端で手を斜め下に出すと、タクシーではない一般の車が止まって乗せてくれることがあります。<span class="redact" tabindex="0" role="button" aria-label="黒塗り。押すと表示">地元の人にとってはごく普通の移動手段。ただし乗る前に行き先と料金を必ず決めること。</span></p>
+      <p class="scribble">旅行者は配車アプリのほうが安心。</p>
+    </article>
+    <article class="card">
+      <span class="kicker">TRAFFIC ・ 渋滞</span>
+      <h3>夕方の大通りは、歩いたほうが早い</h3>
+      <p>首都の渋滞は世界有数のレベル。<span class="redact" tabindex="0" role="button" aria-label="黒塗り。押すと表示">数キロなら歩いたほうが早いのは地元の常識。待ち合わせに遅れても「渋滞で」で通じてしまう。</span></p>
+      <p class="scribble">時間に余裕を、心にも余裕を。</p>
+    </article>
+    <article class="card">
+      <span class="kicker">MONEY ・ 支払い</span>
+      <h3>街はQR決済、田舎は現金</h3>
+      <p>ウランバートルではカードやQR決済が広く使えます。<span class="redact" tabindex="0" role="button" aria-label="黒塗り。押すと表示">でも草原に出たら電波もATMもない場所ばかり。小額の紙幣を多めに持っていくのが鉄則。</span></p>
+    </article>
+    <article class="card">
+      <span class="kicker">SHOPPING ・ 買い物</span>
+      <h3>値段交渉は、市場だけ</h3>
+      <p>ナラントール市場などの屋外市場では交渉が当たり前。<span class="redact" tabindex="0" role="button" aria-label="黒塗り。押すと表示">デパートやチェーン店では交渉しない。カシミヤは観光地のお土産屋より、メーカー直営の工場店のほうが品質も値段も納得できる。</span></p>
+    </article>
+    <article class="card">
+      <span class="kicker">FOOD ・ 食事</span>
+      <h3>本当においしい店は、看板が小さい</h3>
+      <p>地元の人が通うのは「ゴアンズ」と呼ばれる大衆食堂。<span class="redact" tabindex="0" role="button" aria-label="黒塗り。押すと表示">ランチセット(<span class="mono">Ланч</span>)は安くて量が多い。ボーズやホーショールが食べたいなら、観光客向けレストランよりこっち。</span></p>
+    </article>
+    <article class="card">
+      <span class="kicker">STEPPE ・ 遊牧民の家</span>
+      <h3>訪問するなら、手みやげはお菓子</h3>
+      <p>草原のゲルでは、見知らぬ旅人でもお茶でもてなすのが伝統です。<span class="redact" tabindex="0" role="button" aria-label="黒塗り。押すと表示">お礼に喜ばれるのは、町でしか買えない飴やクッキー、果物。子どもがいる家は特に喜ぶ。</span></p>
+    </article>
+  </div>
+</section>
+
+<section class="ch" id="fails">
+  <div class="ch-head"><span class="no">02</span><h2>旅行者のやらかし集</h2><p>よくある失敗と、こうすればよかった</p></div>
+  <div class="fails">
+    <div class="fail">
+      <div class="what"><h3>市場でスマホをすられた</h3><p>人ごみの市場や混んだバスはスリが多い場所です。</p></div>
+      <div class="fix"><strong>こうすればよかった</strong><p>スマホと財布は前ポケットか体の前のバッグへ。<span class="redact" tabindex="0" role="button" aria-label="黒塗り。押すと表示">リュックは前に抱える。地元の人もそうしている。</span></p></div>
+    </div>
+    <div class="fail">
+      <div class="what"><h3>馬乳酒を飲みすぎてお腹を壊した</h3><p>夏の名物アイラグ(<span class="mono">айраг</span>)は発酵した馬の乳。勧められるとつい飲んでしまいます。</p></div>
+      <div class="fix"><strong>こうすればよかった</strong><p>初めてなら少しずつ。<span class="redact" tabindex="0" role="button" aria-label="黒塗り。押すと表示">現地の人でも飲み慣れない人はお腹をこわす。正直に「少しだけ」と言ってOK。</span></p></div>
+    </div>
+    <div class="fail">
+      <div class="what"><h3>草原で「トイレどこ?」と聞いたら、草原を指された</h3><p>地方では穴を掘っただけの屋外トイレか、そもそもトイレがないことも。</p></div>
+      <div class="fix"><strong>こうすればよかった</strong><p>トイレットペーパーとウェットティッシュは必携。<span class="redact" tabindex="0" role="button" aria-label="黒塗り。押すと表示">遊牧民の言い回しでは「馬を見てくる」がトイレの意味。</span></p></div>
+    </div>
+    <div class="fail">
+      <div class="what"><h3>10月に夏服で行って凍えた</h3><p>草原は一日の寒暖差が大きく、秋でも朝晩は氷点下になります。</p></div>
+      <div class="fix"><strong>こうすればよかった</strong><p>季節を問わず、薄手のダウンと帽子を一枚。<span class="redact" tabindex="0" role="button" aria-label="黒塗り。押すと表示">「一日に四季がある」とモンゴル人自身が言うほど。夏に雪が降ることもある。</span></p></div>
+    </div>
+    <div class="fail">
+      <div class="what"><h3>悪路で酔って、景色どころではなかった</h3><p>都市を出ると舗装されていない道がほとんどで、何時間も揺られます。</p></div>
+      <div class="fix"><strong>こうすればよかった</strong><p>酔い止めは必須。<span class="redact" tabindex="0" role="button" aria-label="黒塗り。押すと表示">この揺れを地元の人は冗談で「モンゴリアン・マッサージ」と呼ぶ。</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="ch" id="life">
+  <div class="ch-head"><span class="no">03</span><h2>暮らしのリアル</h2><p>住んでみて初めてわかること</p></div>
+  <div class="cards">
+    <article class="card wide">
+      <span class="kicker">WINTER ・ 世界一寒い首都</span>
+      <h3>ウランバートルの冬、体感の目安</h3>
+      <div class="thermo">
+        <div class="scale">
+          <div class="step"><b>0℃</b>まだ秋。上着一枚</div>
+          <div class="step"><b>−10℃</b>手袋なしはつらい</div>
+          <div class="step"><b>−20℃</b>まつ毛が凍り始める</div>
+          <div class="step"><b>−30℃</b>スマホの電池が急に落ちる</div>
+          <div class="step"><b>−40℃</b>1月の朝はここまで下がる</div>
+        </div>
+        <p>冬は暖房の煙で空気が悪くなる日もあります。<span class="redact" tabindex="0" role="button" aria-label="黒塗り。押すと表示">地元の人はマスク必須。スマホは内ポケットで体温で温めておくのが生活の知恵。</span></p>
+      </div>
+    </article>
+    <article class="card">
+      <span class="kicker">FAMILY ・ 家族</span>
+      <h3>いとこは、ほぼきょうだい</h3>
+      <p>親戚づきあいがとても濃く、いとこも「兄弟」と呼ぶことがよくあります。<span class="redact" tabindex="0" role="button" aria-label="黒塗り。押すと表示">知り合いをたどれば国中みんなつながっている、と本気で言われる。人口約350万人の国ならでは。</span></p>
+    </article>
+    <article class="card">
+      <span class="kicker">TIME ・ 時間感覚</span>
+      <h3>予定は「だいたい」で動く</h3>
+      <p>天気、道、家畜の都合で予定は変わるもの、という感覚があります。<span class="redact" tabindex="0" role="button" aria-label="黒塗り。押すと表示">「明日行く」が三日後になることも。焦らず待つのが草原流。</span></p>
+    </article>
+    <article class="card">
+      <span class="kicker">YOUTH ・ 若者文化</span>
+      <h3>街には韓国のコンビニ、耳にはモンゴル語ラップ</h3>
+      <p>ウランバートルでは韓国系のコンビニがあちこちにあり、若者にはK-POPやモンゴル語ヒップホップが大人気です。<span class="redact" tabindex="0" role="button" aria-label="黒塗り。押すと表示">伝統のホーミーやモリンホールと、ラップを混ぜたバンドもいる。草原と都会が普通に同居している。</span></p>
+    </article>
+    <article class="card">
+      <span class="kicker">FOOD ・ 食生活</span>
+      <h3>主役は肉。野菜は脇役</h3>
+      <p>伝統的な食事は羊肉と乳製品が中心です。<span class="redact" tabindex="0" role="button" aria-label="黒塗り。押すと表示">ベジタリアンは地方ではかなり苦労する。街には菜食レストランも増えているので、首都で食べだめを。</span></p>
+    </article>
+  </div>
+</section>
+
+<section class="ch" id="words">
+  <div class="ch-head"><span class="no">04</span><h2>本当に使うことば</h2><p>教科書の意味と、実際の使われ方</p></div>
+  <div class="phr">
+    <table>
+      <thead><tr><th>モンゴル語</th><th>読み</th><th>教科書の意味</th><th>実際は</th></tr></thead>
+      <tbody>
+        <tr><td class="mn">Сайн байна уу?</td><td>サェン バェノー</td><td>こんにちは</td><td class="real">いちばん丁寧な挨拶。友達同士なら「サェノー」</td></tr>
+        <tr><td class="mn">Зүгээр</td><td>ズゲール</td><td>大丈夫</td><td class="real">万能ワード。OK、いいよ、気にしないで、全部これ</td></tr>
+        <tr><td class="mn">Баярлалаа</td><td>バヤルララー</td><td>ありがとう</td><td class="real">言えると一気に笑顔になる</td></tr>
+        <tr><td class="mn">Хэд вэ?</td><td>ヘド ウェ</td><td>いくら?</td><td class="real">市場での最初のひとこと</td></tr>
+        <tr><td class="mn">Амттай!</td><td>アムタェ</td><td>おいしい</td><td class="real">もてなしの席で言うと、おかわりが来る</td></tr>
+        <tr><td class="mn">За</td><td>ザー</td><td>はい、では</td><td class="real">会話のあいづち。何にでも「ザー」</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="ch" id="stories">
+  <div class="ch-head"><span class="no">05</span><h2>DITメンバーの話</h2><p>実際に行った人、住んでいた人の体験談</p></div>
+  <div class="stories">
+    <article class="story">
+      <span class="sample">SAMPLE</span>
+      <div class="who"><span class="avatar">A</span><div><b>メンバーA</b><small>体験談の例</small></div></div>
+      <q>初めてゲルに泊まった夜、星が多すぎて天の川がどれかわからなかった。朝はヤギの声で起きた。</q>
+    </article>
+    <article class="story">
+      <span class="sample">SAMPLE</span>
+      <div class="who"><span class="avatar">B</span><div><b>メンバーB</b><small>体験談の例</small></div></div>
+      <q>遊牧民のお母さんに「もっと食べなさい」と5回言われた。断ったつもりが、3杯目のお茶が出てきた。</q>
+    </article>
+    <div class="story empty">
+      <b>あなたの話を募集中</b>
+      <p>名前(ニックネーム可)、行った時期、エピソードを送ってください。このページに追加します。</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="brand">DIT ORIGINAL GUIDE</span>
+    <p>このガイドは現地の人や旅行者の経験をもとにまとめたものです。地域や季節、人によって事情は変わります。最新の安全情報は外務省の海外安全ホームページなどで確認してください。</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var rs=document.querySelectorAll('.redact');
+  function set(el,open){el.classList.toggle('open',open);el.setAttribute('aria-label',open?'表示中。押すと黒塗りに戻す':'黒塗り。押すと表示');}
+  rs.forEach(function(el){
+    el.addEventListener('click',function(){set(el,!el.classList.contains('open'));});
+    el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();set(el,!el.classList.contains('open'));}});
+  });
+  document.getElementById('open-all').addEventListener('click',function(){rs.forEach(function(el){set(el,true);});});
+  document.getElementById('close-all').addEventListener('click',function(){rs.forEach(function(el){set(el,false);});});
+})();
+</script>
+
+</body>
+</html>
